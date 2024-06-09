@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'kg_chasing';
+    src: url('kgchasingpavements.eot');
+    src: url('kgchasingpavementsd41d.eot?#iefix') format('embedded-opentype'),
+         url('kgchasingpavements.woff2') format('woff2'),
+         url('kgchasingpavements.woff') format('woff'),
+         url('kgchasingpavements.ttf') format('truetype'),
+         url('kgchasingpavements.svg#kg_chasing_pavementsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'kg_eyes';
+    src: url('kgeyeswideopen.eot');
+    src: url('kgeyeswideopend41d.eot?#iefix') format('embedded-opentype'),
+         url('kgeyeswideopen.woff2') format('woff2'),
+         url('kgeyeswideopen.woff') format('woff'),
+         url('kgeyeswideopen.ttf') format('truetype'),
+         url('kgeyeswideopen.svg#kg_eyes_wide_openregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'kg_next';
+    src: url('kgnexttomesolid.eot');
+    src: url('kgnexttomesolidd41d.eot?#iefix') format('embedded-opentype'),
+         url('kgnexttomesolid.woff2') format('woff2'),
+         url('kgnexttomesolid.woff') format('woff'),
+         url('kgnexttomesolid.ttf') format('truetype'),
+         url('kgnexttomesolid.svg#kg_next_to_me_solidregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'kg_sketch';
+    src: url('kgsecondchancessketch.eot');
+    src: url('kgsecondchancessketchd41d.eot?#iefix') format('embedded-opentype'),
+         url('kgsecondchancessketch.woff2') format('woff2'),
+         url('kgsecondchancessketch.woff') format('woff'),
+         url('kgsecondchancessketch.ttf') format('truetype'),
+         url('kgsecondchancessketch.svg#kg_second_chances_sketchRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'kg_solid';
+    src: url('kgsecondchancessolid.eot');
+    src: url('kgsecondchancessolidd41d.eot?#iefix') format('embedded-opentype'),
+         url('kgsecondchancessolid.woff2') format('woff2'),
+         url('kgsecondchancessolid.woff') format('woff'),
+         url('kgsecondchancessolid.ttf') format('truetype'),
+         url('kgsecondchancessolid.svg#kg_second_chances_solidRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'kg_shadow';
+    src: url('kgshadowoftheday.eot');
+    src: url('kgshadowofthedayd41d.eot?#iefix') format('embedded-opentype'),
+         url('kgshadowoftheday.woff2') format('woff2'),
+         url('kgshadowoftheday.woff') format('woff'),
+         url('kgshadowoftheday.ttf') format('truetype'),
+         url('kgshadowoftheday.svg#kg_shadow_of_the_dayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
