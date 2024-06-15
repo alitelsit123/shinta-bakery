@@ -12,6 +12,8 @@ class AddProduct extends Component
   #[Validate('required')]
   public $name;
   #[Validate('required')]
+  public $outlet_id;
+  #[Validate('required')]
   public $price = 0;
   public $description;
   #[Validate('required')]
@@ -27,7 +29,8 @@ class AddProduct extends Component
           'name' => $this->name,
           'description' => $this->description,
           'status' => 'enabled',
-          'price' => $this->price
+          'price' => $this->price,
+          'outlet_id' => $this->outlet_id,
         ]);
         $path = $this->image->store(path: 'public/products');
         $product->image = str_replace('public/','',$path);
@@ -36,6 +39,7 @@ class AddProduct extends Component
         $this->description = null;
         $this->image = null;
         $this->price = 0;
+        $this->outlet_id = null;
         $this->dispatch('alert-success', message: "Produk dibuat!");
         $this->dispatch('reloadtableproduct');
       }

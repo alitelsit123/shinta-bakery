@@ -8,7 +8,7 @@ class Product extends Component
 {
   public function render()
   {
-    $list = \App\Models\Product::all();
+    $list = \App\Models\Product::has('outlet')->get();
     return view('livewire.product', compact('list'));
   }
 }

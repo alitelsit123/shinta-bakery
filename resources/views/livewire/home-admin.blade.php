@@ -49,33 +49,31 @@
   max-width: 962px;
   "
   >
+  <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">#ID</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col">Total Pembayaran</th>
+        <th scope="col">Status</th>
+        <th scope="col">Aksi</th>
       </tr>
     </thead>
     <tbody>
+      @foreach (\App\Models\Transaction::whereIn('status', ['pending','waiting','confirmed']) as $row)
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">#{{$row->id}}</th>
+        <td>{{\Carbon\Carbon::parse($row->created_at)->format('d, F Y H:i:s')}}</td>
+        <td>Rp. {{number_format($row->total)}}</td>
+        <td>{{$row->status}}</td>
+        <td>
+          <button class="btn btn-sm btn-secondary" style="background: #5f492f;">Lihat Detail</button>
+          @if ($row->status == 'pending')
+          <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="{{url('invoice-detail/'.$row->id)}}" wire:navigate>Bayar</a>
+          @endif
+        </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 </div>

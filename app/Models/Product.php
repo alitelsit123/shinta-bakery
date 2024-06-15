@@ -13,6 +13,10 @@ class Product extends Model
     'image',
     'description',
     'status',
-    'price'
+    'price',
+    'outlet_id'
   ];
+  public function outlet() {
+    return $this->belongsTo('App\Models\Outlet','outlet_id');
+  }
 }

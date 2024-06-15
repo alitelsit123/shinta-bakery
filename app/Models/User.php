@@ -25,7 +25,7 @@ class User extends Authenticatable
       'role',
       'password',
       'address',
-      'address_latlng',
+      'address_pin',
       'last_cashback_at'
     ];
 

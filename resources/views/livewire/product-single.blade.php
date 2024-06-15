@@ -21,6 +21,15 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     </div>
     @if (auth()->user() && auth()->user()->role == 'admin')
     <div class="mt-4 p-3">
+      <label for="">Outlet</label>
+      <select class="form-control" wire:model.live.debounce.250s="outlet_id">
+        <option value="" disabled>-- Pilih Outlet --</option>
+        @foreach (\App\Models\Outlet::all() as $row)
+        <option value="{{$row->id}}">{{$row->name}}</option>
+        @endforeach
+      </select>
+    </div>
+    <div class="mt-4 p-3">
       <label for="">Status</label>
       <select class="form-control" wire:model.live.debounce.250s="status">
         <option value="" disabled>-- Pilih Status --</option>
@@ -32,7 +41,7 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     <button type="button" class="btn btn-success mt-4">Tersedia</button>
     @endif
   </div>
-  <div data-appear-animation="fadeInDown" class="appear-animation fadeInDown appear-animation-visible p-3">
+  <div data-appear-animation="fadeInDown" class="appear-animation fadeInDown appear-animation-visible px-3 pb-3">
     @if (auth()->user() && auth()->user()->role == 'admin')
     <div class="mt-4">
       <div class="form-group">
@@ -44,6 +53,10 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
         <label for="">Harga</label>
         <input type="number" class="form-control" id="" aria-describedby="" wire:model.live.debounce.250s="price">
         {{-- <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <div class="form-group">
+        <label for="">Deskripsi</label>
+        <textarea id="" class="form-control" rows="3" wire:model.live.debounce.250s="description"></textarea>
       </div>
     </div>
     <div class="mt-4" style="color: green;display:none;" wire:loading wire:target="image">Sedang mengupload ...</div>
@@ -62,11 +75,38 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       }
     ">Data gagal diubah!</div>
     @else
-    <div style="font-family:playfair_bold; font-weight:bold; font-size:24px; color:#606064; padding:10px 0 0 0;">
+    <div class="flex align-items-center" style="font-weight:bold; font-size:18px; color:#606064; padding:10px 0 0 0;">
       {{$item->name}}
     </div>
-    <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 0 0 35px 0;">
+    <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
+      Outlet {{$item->outlet->name}}
+    </div>
+    <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
       Rp. {{number_format($item->price)}}
+    </div>
+    <div style="font-family:playfair_bold; color:#606064; padding:10px 0 0 0;">
+      {{$item->description}}
+    </div>
+    <div class="d-flex align-items-center justify-content-center" style="column-gap: 1rem;padding-top: 10px;">
+      @if (auth()->user() && auth()->user()->carts()->whereProduct_id($item->id)->first())
+      <div>Sudah dimasukkan keranjang</div>
+      @else
+      <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" style="height: 20.13px;" x-ref="inputcart">
+
+      <button class="btn btn-sm btn-primary" type="button"
+
+      @if (auth()->check())
+
+      @click="$wire.addToCart({{$item->id}},$refs.inputcart.value)"
+
+      @else
+
+      @click="$('#auth-modal').modal('show')"
+
+      @endif
+
+      >+Keranjang</button>
+      @endif
     </div>
     @endif
   </div>

@@ -62,6 +62,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{url('datetimepicker/jquery.datetimepicker.min.css')}}">
+    <script src="{{url('datetimepicker/jquery.datetimepicker.full.js')}}"></script>
     <style>
       #full-width-slider {
     width: 100%;
@@ -149,7 +151,7 @@
   .nav a {
     color: #5f492f;
   }
-  .btn-primary, .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  .btn-primary, .nav-pills .nav-link.active, .nav-pills .show>.nav-link, .btn-primary:hover {
     background-color: #5f492f;
   }
     </style>
@@ -175,32 +177,30 @@
   <style>
     .navbar-main {
       padding: 0 100px 0 150px;
+      z-index: 99!important;
     }
   </style>
+    <style>
+      .table .thead-dark th {
+        background-color: #5f492f;
+        border-color: #5f492f;
+      }
+      @media screen and (min-width: 991px) {
+        .nav-lg-hidden {
+          display: none!important;
+        }
+      }
+    </style>
   @livewireStyles
 </head>
 <!--[if lt IE 9]><body class="oldie"><![endif]--><!--[if IE 9]><body class="ie9"><![endif]--><!--[if !IE]>-->
 <body class="svg has-overlay" data-twttr-rendered="true"  style="background-image:url('{{url('/base')}}/images/back.jpg');" id="cobaheader" onscroll="">
     <a name="palingatas"></a>
     <div id="wrapper" class="wrapper2">
-    <div class="navbar-meta navbar navbar-static-top font-cond" role="navigation">
-        <div class="container-fluid" style="text-align:center;">
-            <div class="nav navbar-nav">
-                <a href="home.html" class="logotengahmuncul jarakataslogo" style="text-transform: uppercase; vertical-align: middle; color: #000; border:0px solid red;">
-                    <img src="{{url('/base')}}/images/logo.png" style="position: absolute; top: -30px; left: 0; right: 0; margin: auto;" class="logopaskecil"/>
-                </a>
-
-                <div class="nav-actions" style="border:0px solid; position:absolute; top:0px; right:0px;">
-                    <button type="button" class="toggle-menu visible-xs-inline-block" data-toggle-class="withMenu" data-toggle-back=".navbar-main" data-target="body">
-                        <img src="{{url('/base')}}/images/menu.png">
-                    </button>
-                </div>
-
-            </div>
-            <div class="navbar-nav navbar-left nav-tagline hidden-xs"></div>
-        </div>
-    </div>
+    <livewire:navbar>
 </div>
+
+<livewire:auth>
 
 
 <!--RESPONSIVE -->
@@ -234,10 +234,13 @@
 
                           "></div>
                         </td>
-                        <td style="font-family:brandon_grotesquebold; font-size:19px; font-size:19px; color:#333; text-align: right; padding: 0 30px 0 0;" align="right">
+                        <td align="" style="font-family:brandon_grotesquebold; font-size:19px; font-size:19px; color:#333; text-align: left; padding: 0px; padding-left: 145px;">
                             <a href="{{url('/')}}" class="colormenu2" wire:navigate>
                               Home
                             </a>
+                            @if (auth()->check() && auth()->user()->role == 'driver')
+
+                            @else
                             &nbsp;&nbsp;
                             <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
                             &nbsp;&nbsp;
@@ -246,24 +249,43 @@
                             &nbsp;&nbsp;
                             <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
                             &nbsp;&nbsp;
-                            <a href="hubungi.html" class="colormenu2" style="">Keranjang</a>
                             @endif
-                            @if (auth()->check() && auth()->user()->role == 'admin')
-                            &nbsp;&nbsp;
-                            <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                            &nbsp;&nbsp;
-                            <a href="{{url('/outlet')}}" class="colormenu2" wire:navigate>
-                              Outlet
-                            </a>
+                            <a class="colormenu2" style=""
+                            @if (auth()->check() && auth()->user()->role != 'driver')
+                            href="{{url('/cart')}}"
+                            wire:navigate
+                            @else
+
+                            @click="$('#auth-modal').modal('show')"
+                            href="#"
+
                             @endif
-                            &nbsp;&nbsp;
-                            <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                            &nbsp;&nbsp;
-                             <a href="{{url('transaction')}}" class="colormenu2" style="" wire:navigate>Transaksi</a>
+                            >Keranjang</a>
+                            @endif
+                            @auth
+                              @if (auth()->user()->role != 'driver')
+                                @if (auth()->check() && auth()->user()->role == 'admin')
+                                &nbsp;&nbsp;
+                                <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
+                                &nbsp;&nbsp;
+                                <a href="{{url('/outlet')}}" class="colormenu2" wire:navigate>
+                                  Outlet
+                                </a>
+                                @endif
+                                &nbsp;&nbsp;
+                                <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
+                                &nbsp;&nbsp;
+                                <a href="{{url('transaction')}}" class="colormenu2" style="" wire:navigate>Transaksi</a>
+                              @endif
+                            @endauth
                         </td>
-                        <td align="center" style="">
+                        <td align="right" style="">
                           @guest
-                          <livewire:auth>
+                          <a href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
+                          font-size: 24px;
+                          font-weight: bold;
+                          border: 2px solid #5f492f;
+                          ">Masuk | Daftar</a>
                           @endguest
                           @auth
                           <div class="dropdown">
@@ -279,7 +301,7 @@
                               {{auth()->user()->name}}
                             </button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Profile</a>
+                              <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
                               <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
                             </div>
                           </div>
@@ -453,6 +475,20 @@
           icon: "error"
         });
       });
+      Livewire.on('pay-now', (event) => {
+        Swal.fire({
+          title: "Sukses!",
+          text: event.message,
+          icon: "success"
+        });
+      });
+      Livewire.on('order-received', (event) => {
+        Swal.fire({
+          title: "Pesanan masuk!",
+          text: event.message,
+          icon: "success"
+        });
+      })
   });
 </script>
 </body>

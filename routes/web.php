@@ -18,6 +18,9 @@ Route::get('/', \App\Livewire\Home::class);
 Route::get('/product', \App\Livewire\Product::class);
 Route::get('/transaction', \App\Livewire\Transaction::class);
 Route::get('/outlet', \App\Livewire\Outlet::class);
+Route::get('/cart', \App\Livewire\Cart::class);
+Route::get('/profile', \App\Livewire\Profile::class);
+Route::get('/invoice-detail/{transaction_id}', \App\Livewire\InvoiceDetail::class);
 
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class,'login']);

@@ -1,9 +1,4 @@
 <div>
-  <a href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
-  font-size: 24px;
-  font-weight: bold;
-  border: 2px solid #5f492f;
-  ">Masuk | Daftar</a>
   <!-- Modal -->
   <div class="modal " id="auth-modal" tabindex="-1" aria-labelledby="authLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">

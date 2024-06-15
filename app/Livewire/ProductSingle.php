@@ -15,9 +15,38 @@ class ProductSingle extends Component
   public $description;
   public $image;
   public $realImage;
+  public $outlet_id;
+  public function addToCart($id,$quantity) {
+    $existingCart = \App\Models\Cart::whereProduct_id($id)->whereUser_id(auth()->id())->first();
+    if ($existingCart) {
+      $existingCart->quantity = $quantity ? $quantity: 1;
+      $existingCart->save();
+    } else {
+      $existingCart = \App\Models\Cart::create([
+        'quantity' => $quantity ? $quantity: 1,
+        'product_id' => $id,
+        'user_id' => auth()->id()
+      ]);
+    }
+    $this->dispatch('alert-success', message: 'Produk dimasukan keranjang!');
+  }
+  public function updatedDescription() {
+    if ($this->description) {
+      $this->item->description = $this->description;
+      $this->item->save();
+      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
+    }
+  }
   public function updatedName() {
     if ($this->name) {
       $this->item->name = $this->name;
+      $this->item->save();
+      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
+    }
+  }
+  public function updatedOutletId() {
+    if ($this->outlet_id) {
+      $this->item->outlet_id = $this->outlet_id;
       $this->item->save();
       $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
