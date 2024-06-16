@@ -38,7 +38,11 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       </select>
     </div>
     @else
-    <button type="button" class="btn btn-success mt-4">Tersedia</button>
+      @if ($item->status == 'enabled')
+      <button type="button" class="btn btn-success mt-4">Tersedia</button>
+      @else
+      <button type="button" class="btn btn-danger mt-4">Tidak Tersedia</button>
+      @endif
     @endif
   </div>
   <div data-appear-animation="fadeInDown" class="appear-animation fadeInDown appear-animation-visible px-3 pb-3">
