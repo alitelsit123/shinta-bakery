@@ -459,6 +459,9 @@
 @livewireScripts
 <script>
   document.addEventListener('livewire:init', () => {
+      Livewire.on('reload-page', (event) => {
+        document.location.reload()
+      });
       Livewire.on('alert-success', (event) => {
         $('.btn-modal-close').click()
         Swal.fire({

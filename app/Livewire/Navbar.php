@@ -29,7 +29,7 @@ class Navbar extends Component
             if ($status) {
               $row->status = 'waiting';
               $row->save();
-              $this->dispatch('payment-success', message: 'Pembayaran berhasil, silahkan refresh halaman.');
+              $this->dispatch('alert-success', message: 'Pembayaran berhasil, silahkan refresh halaman.');
             }
             sleep(1);
           }

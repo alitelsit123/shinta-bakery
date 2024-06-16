@@ -124,11 +124,13 @@
               </div>
             </div>
           </div>
+          @if (auth()->check() && auth()->user()->carts()->count() > 0)
           <div class="card-footer font-weight-bold">
             <button type="button" class="btn btn-block btn-primary" wire:click="checkout">
               Checkout
             </button>
           </div>
+          @endif
         </div>
       </div>
     </div>

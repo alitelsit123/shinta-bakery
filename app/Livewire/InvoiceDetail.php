@@ -25,6 +25,13 @@ class InvoiceDetail extends Component
     }
     $this->dispatch('pay-now', token: $this->transaction->token);
   }
+  public function finishConfirmation($id) {
+    $tx = \App\Models\Transaction::findOrFail($id);
+    $tx->status = 'settlement';
+    $tx->save();
+    $this->dispatch('alert-success', message: 'Pesanan Diterima, terimakasih.');
+    $this->dispatch('reload-page');
+  }
   public function mount($transaction_id) {
     $this->transaction = \App\Models\Transaction::findOrFail($transaction_id);
   }

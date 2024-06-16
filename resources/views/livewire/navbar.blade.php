@@ -1,5 +1,5 @@
 <div class="navbar-meta navbar navbar-static-top font-cond nav-lg-hidden" role="navigation"
-@if (auth()->check() && auth()->user()->role == 'admin')
+@if (auth()->check() && auth()->user()->role != 'driver')
 wire:poll.keep-alive
 @endif
 >
