@@ -1,6 +1,6 @@
 <div>
   <center>
-    <div class="location-selector" style="opacity: 1; display: block;">
+    <div class="location-selector" style="opacity: 1; display: block;z-index: 1;">
       <div class="container" style="width: 100%; padding: 0; margin: 0;">
         <div class="row">
           <div class="col-xs-12">
