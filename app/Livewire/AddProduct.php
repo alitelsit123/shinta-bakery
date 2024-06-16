@@ -11,7 +11,6 @@ class AddProduct extends Component
   use WithFileUploads;
   #[Validate('required')]
   public $name;
-  #[Validate('required')]
   public $outlet_id;
   #[Validate('required')]
   public $price = 0;
