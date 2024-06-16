@@ -21,7 +21,7 @@
       style="background: #5f492f;color: white;"
       >Order Baru</div>
       <div class="card-body text-secondary">
-        <h5 class="card-title">50</h5>
+        <h5 class="card-title">{{\App\Models\Transaction::whereStatus('waiting')->count()}}</h5>
         <p class="card-text">Lihat Semua</p>
       </div>
     </div>
@@ -34,7 +34,7 @@
       style="background: #5f492f;color: white;"
       >Pendapatan</div>
       <div class="card-body text-secondary">
-        <h5 class="card-title">Rp. 50.000</h5>
+        <h5 class="card-title">Rp. {{number_format(\App\Models\Transaction::whereStatus('waiting')->sum('total'))}}</h5>
         <p class="card-text">Lihat Semua</p>
       </div>
     </div>
@@ -60,17 +60,14 @@
       </tr>
     </thead>
     <tbody>
-      @foreach (\App\Models\Transaction::whereIn('status', ['pending','waiting','confirmed']) as $row)
+      @foreach (\App\Models\Transaction::whereIn('status', ['pending','waiting','confirmed'])->get() as $row)
       <tr>
         <th scope="row">#{{$row->id}}</th>
         <td>{{\Carbon\Carbon::parse($row->created_at)->format('d, F Y H:i:s')}}</td>
         <td>Rp. {{number_format($row->total)}}</td>
         <td>{{$row->status}}</td>
         <td>
-          <button class="btn btn-sm btn-secondary" style="background: #5f492f;">Lihat Detail</button>
-          @if ($row->status == 'pending')
-          <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="{{url('invoice-detail/'.$row->id)}}" wire:navigate>Bayar</a>
-          @endif
+          <a href="{{url('transaction')}}" class="btn btn-sm btn-secondary" style="background: #5f492f;" wire:navigate>Lihat Detail</a>
         </td>
       </tr>
       @endforeach
