@@ -87,7 +87,7 @@
             </td>
             <td>
               <div style="width: 250px;">
-                {{$row->user->address}}
+                {{$row->user->address ?? ''}}
               </div>
             </td>
             <td>

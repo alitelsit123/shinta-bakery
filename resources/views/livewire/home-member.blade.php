@@ -267,7 +267,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div style="width: 100%; letter-spacing:3px; padding:15px 0 15px 0; font-family: roboto_medium; font-size: 14px; color:#292929 ;">
-                  Kampoeng Roti. All right Reserved @2024. By <a href="../kibocreative.com/index.html" target="_blank" style="color:#292929;">Kibo Creative</a>
+                  Shinta Bakery. All right Reserved @2024. By <a href="../kibocreative.com/index.html" target="_blank" style="color:#292929;">Kibo Creative</a>
                 </div>
               </div>
             </div>

@@ -20,7 +20,7 @@
             @enderror
           </div>
           <div class="form-group mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nama</label>
+            <label for="exampleFormControlInput1" class="form-label">Outlet</label>
             <select wire:model="outlet_id" class="form-control" id="">
               <option value="" selected></option>
               @foreach (\App\Models\Outlet::all() as $row)

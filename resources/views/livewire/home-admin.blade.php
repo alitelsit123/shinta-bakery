@@ -5,11 +5,33 @@
       border-color: #5f492f;
     }
   </style>
-  <h1 class="text-center mb-5"
-  style="
-  color: #5f492f;
-  "
-  >Dashboard</h1>
+  <div class="" style="margin: 30px 0 45px 0;">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div style="margin: 55px 0 25px 0;" class="text-center">
+              <div style="background-image: url('{{url('/base')}}/images/mkiri.png'); background-size: cover;" class="displainlinetop plepet"></div>
+              <div style="background-image: url('{{url('/base')}}/images/mtengah.png');text-transform: uppercase; " class="displainlinetop productselec">
+                <div class="tempatpaddingtexthome" style="text-transform: uppercase;">
+                  <div data-appear-animation="fadeInDown" class="displainlinetop appear-animation">
+                    <img src="{{url('/base')}}/images/titik.png" class="titikselect">
+                  </div>
+                  <div data-appear-animation="fadeInDown" class="displainlinetop productselec appear-animation" style="text-transform: uppercase; font-family:veneer;  color:#ac8b58;opacity: 1;">
+                    Dashboard
+                  </div>
+                  <div data-appear-animation="fadeInDown" class="displainlinetop appear-animation">
+                    <img src="{{url('/base')}}/images/titik.png" class="titikselect">
+                  </div>
+                </div>
+              </div>
+              <div style="background-image: url('{{url('/base')}}/images/mkanan.png'); " class="displainlinetop plepet"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <hr class="mb-4" />
   <div class="d-flex align-items-start justify-content-center" style="column-gap: 1rem;">
     <div class="card mb-3" style="

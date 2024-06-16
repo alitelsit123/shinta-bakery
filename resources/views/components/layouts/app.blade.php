@@ -9,7 +9,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="application-name" content="Kampoeng Roti">
 	<meta charset="utf-8">
-	<title>Kampoeng Roti</title>
+	<title>Shinta Bakery</title>
 	<meta name="content-language" content="en-gb">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<base  />
@@ -241,26 +241,26 @@
                             @if (auth()->check() && auth()->user()->role == 'driver')
 
                             @else
-                            &nbsp;&nbsp;
-                            <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                            &nbsp;&nbsp;
-                            <a href="{{url('product')}}" wire:navigate class="colormenu2" style="">Product</a>
-                            @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
-                            &nbsp;&nbsp;
-                            <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                            &nbsp;&nbsp;
-                            @endif
-                            <a class="colormenu2" style=""
-                            @if (auth()->check() && auth()->user()->role != 'driver')
-                            href="{{url('/cart')}}"
-                            wire:navigate
-                            @else
+                              &nbsp;&nbsp;
+                              <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
+                              &nbsp;&nbsp;
+                              <a href="{{url('product')}}" wire:navigate class="colormenu2" style="">Product</a>
+                              @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
+                              &nbsp;&nbsp;
+                              <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
+                              &nbsp;&nbsp;
+                              <a class="colormenu2" style=""
+                              @if (auth()->check() && auth()->user()->role != 'driver')
+                              href="{{url('/cart')}}"
+                              wire:navigate
+                              @else
 
-                            @click="$('#auth-modal').modal('show')"
-                            href="#"
+                              @click="$('#auth-modal').modal('show')"
+                              href="#"
 
-                            @endif
-                            >Keranjang</a>
+                              @endif
+                              >Keranjang</a>
+                              @endif
                             @endif
                             @auth
                               @if (auth()->user()->role != 'driver')
