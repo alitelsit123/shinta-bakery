@@ -79,39 +79,41 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       }
     ">Data gagal diubah!</div>
     @else
-    <div class="flex align-items-center" style="font-weight:bold; font-size:18px; color:#606064; padding:10px 0 0 0;">
-      {{$item->name}}
-    </div>
-    <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
-      Outlet {{$item->outlet->name}}
-    </div>
-    <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
-      Rp. {{number_format($item->price)}}
-    </div>
-    <div style="font-family:playfair_bold; color:#606064; padding:10px 0 0 0;">
-      {{$item->description}}
-    </div>
-    <div class="d-flex align-items-center justify-content-center" style="column-gap: 1rem;padding-top: 10px;">
-      @if (auth()->user() && auth()->user()->carts()->whereProduct_id($item->id)->first())
-      <div>Sudah dimasukkan keranjang</div>
-      @else
-      <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" style="height: 20.13px;" x-ref="inputcart">
+      <div class="flex align-items-center" style="font-weight:bold; font-size:18px; color:#606064; padding:10px 0 0 0;">
+        {{$item->name}}
+      </div>
+      <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
+        Outlet {{$item->outlet->name}}
+      </div>
+      <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
+        Rp. {{number_format($item->price)}}
+      </div>
+      <div style="font-family:playfair_bold; color:#606064; padding:10px 0 0 0;">
+        {{$item->description}}
+      </div>
+      @if ($item->status == 'enabled')
+        <div class="d-flex align-items-center justify-content-center" style="column-gap: 1rem;padding-top: 10px;">
+          @if (auth()->user() && auth()->user()->carts()->whereProduct_id($item->id)->first())
+          <div>Sudah dimasukkan keranjang</div>
+          @else
+          <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" style="height: 20.13px;" x-ref="inputcart">
 
-      <button class="btn btn-sm btn-primary" type="button"
+          <button class="btn btn-sm btn-primary" type="button"
 
-      @if (auth()->check())
+          @if (auth()->check())
 
-      @click="$wire.addToCart({{$item->id}},$refs.inputcart.value)"
+          @click="$wire.addToCart({{$item->id}},$refs.inputcart.value)"
 
-      @else
+          @else
 
-      @click="$('#auth-modal').modal('show')"
+          @click="$('#auth-modal').modal('show')"
 
+          @endif
+
+          >+Keranjang</button>
+          @endif
+        </div>
       @endif
-
-      >+Keranjang</button>
-      @endif
-    </div>
     @endif
   </div>
 </div>
