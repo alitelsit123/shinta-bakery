@@ -41,7 +41,7 @@ class AddOutlet extends Component
         $this->address = null;
         $this->image = null;
         $this->dispatch('alert-success', message: "Outlet dibuat!");
-        $this->dispatch('reloadtableoutlet');
+        $this->dispatch('reloadoutlet')->to(Outlet::class);
       }
     } catch (\Throwable $th) {
       $this->dispatch('alert-error', message: "Gagal!");

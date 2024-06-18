@@ -40,6 +40,7 @@ class AddProduct extends Component
         $this->price = 0;
         $this->outlet_id = null;
         $this->dispatch('alert-success', message: "Produk dibuat!");
+        $this->dispatch('reloadproduct')->to(Product::class);
       }
     } catch (\Throwable $th) {
       $this->dispatch('alert-error', message: "Gagal!");

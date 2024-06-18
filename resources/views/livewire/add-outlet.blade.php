@@ -84,7 +84,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-modal-close" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" wire:click="store()">Save changes</button>
+          <button disabled="disabled" class="btn btn-primary disabled" wire:loading wire:target="image">Simpan</button>
+          <button type="button" class="btn btn-primary" wire:click="store()" wire:target="image" wire:loading.remove>Simpan</button>
         </div>
       </div>
     </div>
