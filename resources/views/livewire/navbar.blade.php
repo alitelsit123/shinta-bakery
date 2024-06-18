@@ -51,37 +51,41 @@
             <li class="nav-item w-100 text-center" style="font-size: 18px;">
               <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Transaksi</a>
             </li>
-            <li class="nav-item w-100 text-center">
-              @guest
-              <a href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
-              font-size: 24px;
-              font-weight: bold;
-              border: 2px solid #5f492f;
-              ">Masuk | Daftar</a>
-              @endguest
-              @auth
-              <div class="dropdown">
-                <button class="btn dropdown-toggle"
-                style="
-                color: #5f492f;
-                background: transparent;
-                font-size: 24px;
-                font-weight: bold;
-                border: 2px solid #5f492f;
-                margin-top: 1px;
-                "
-                type="button" data-toggle="dropdown" aria-expanded="false">
-                  {{auth()->user()->name}}
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
-                  <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-                </div>
-              </div>
-              @endauth
-            </li>
           @endif
         @endauth
+        <li class="nav-item w-100 text-center">
+          @if(!auth()->check())
+
+          <a href="#" data-target="#auth-modal" data-toggle="modal" class="nav-link colormenu2 px-4 py-2 btn-auth" style="
+          font-size: 24px;
+          font-weight: bold;
+          border: 2px solid #5f492f;
+          margin-top: 8px;
+          ">Masuk | Daftar</a>
+
+          @endif
+
+          @auth
+          <div class="dropdown">
+            <button class="btn dropdown-toggle"
+            style="
+            color: #5f492f;
+            background: transparent;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid #5f492f;
+            margin-top: 1px;
+            "
+            type="button" data-toggle="dropdown" aria-expanded="false">
+              {{auth()->user()->name}}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
+              <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
+            </div>
+          </div>
+          @endauth
+        </li>
       </ul>
     </div>
   </div>
