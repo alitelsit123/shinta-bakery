@@ -196,9 +196,12 @@
 <!--[if lt IE 9]><body class="oldie"><![endif]--><!--[if IE 9]><body class="ie9"><![endif]--><!--[if !IE]>-->
 <body class="svg has-overlay" data-twttr-rendered="true"  style="background-image:url('{{url('/base')}}/images/back.jpg');" id="cobaheader" onscroll="">
     <a name="palingatas"></a>
-    <div id="wrapper" class="wrapper2">
-    <livewire:navbar>
-</div>
+    <div style="background: #5f492f;">
+      <div class="container d-flex justify-content-center">
+        <img src="{{url('/')}}/favicon.jpeg" alt="" srcset="" width="80px;height: 80px;" />
+      </div>
+      <livewire:navbar>
+    </div>
 
 <livewire:auth>
 
@@ -206,160 +209,6 @@
 <!--RESPONSIVE -->
 <div class="container" style="position: relative; display: none;"><a id="signup" href="#" class="" style=""></a></div>
 <a src="#" class="totop active"><img src="{{url('/base')}}/images/up.jpg"></a>
-
-<div class="navbar-main font-cond" id="borderbawahheader" role="navigation" style="background-image:url('{{url('/base')}}/images/back.jpg');">
-    <div class="kecililang">
-        <div  style="width:100%; text-align: center; font-family:pfdin_light; text-transform: uppercase; font-size:14px; color:#333; padding: 0px 0 10px 0;">
-            <center>
-                <table class="lebartabelheader" style="width: 100%;margin: 5px 0 0 0;" border="0">
-                    <tr>
-                        <td>
-                          {{-- <h4
-                          style="
-                          font-weight: bold;
-                          font-size: 46px;
-                          color: #5f492f;
-                          "
-                          >Toko Roti</h4> --}}
-                          <div style="
-                          border-radius: 12px;
-                          width: 108px;
-                          height: 110px;
-                          background-image: url('{{url('/')}}/favicon.jpeg');
-                          position: absolute;
-                          top: -15px;
-                          background-position: center;
-                          background-repeat: no-repeat;
-                          background-size: contain;
-
-                          "></div>
-                        </td>
-                        <td align="" style="font-family:brandon_grotesquebold; font-size:19px; font-size:19px; color:#333; text-align: left; padding: 0px; padding-left: 145px;">
-                            <a href="{{url('/')}}" class="colormenu2" wire:navigate>
-                              Home
-                            </a>
-                            @if (auth()->check() && auth()->user()->role == 'driver')
-
-                            @else
-                              &nbsp;&nbsp;
-                              <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                              &nbsp;&nbsp;
-                              <a href="{{url('product')}}" wire:navigate class="colormenu2" style="">Product</a>
-                              @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
-                              &nbsp;&nbsp;
-                              <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                              &nbsp;&nbsp;
-                              <a class="colormenu2" style=""
-                              @if (auth()->check() && auth()->user()->role != 'driver')
-                              href="{{url('/cart')}}"
-                              wire:navigate
-                              @else
-
-                              @click="$('#auth-modal').modal('show')"
-                              href="#"
-
-                              @endif
-                              >Keranjang</a>
-                              @endif
-                            @endif
-                            @auth
-                              @if (auth()->user()->role != 'driver')
-                                @if (auth()->check() && auth()->user()->role == 'admin')
-                                &nbsp;&nbsp;
-                                <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                                &nbsp;&nbsp;
-                                <a href="{{url('/outlet')}}" class="colormenu2" wire:navigate>
-                                  Outlet
-                                </a>
-                                @endif
-                                &nbsp;&nbsp;
-                                <img src="{{url('/base')}}/images/wajik.png" style="margin-top: -3px;" />
-                                &nbsp;&nbsp;
-                                <a href="{{url('transaction')}}" class="colormenu2" style="" wire:navigate>Transaksi</a>
-                              @endif
-                            @endauth
-                        </td>
-                        <td align="right" style="">
-                          @guest
-                          <a href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
-                          font-size: 24px;
-                          font-weight: bold;
-                          border: 2px solid #5f492f;
-                          ">Masuk | Daftar</a>
-                          @endguest
-                          @auth
-                          <div class="dropdown">
-                            <button class="btn dropdown-toggle"
-                            style="
-                            color: #5f492f;
-                            background: transparent;
-                            font-size: 24px;
-                            font-weight: bold;
-                            border: 2px solid #5f492f;
-                            "
-                            type="button" data-toggle="dropdown" aria-expanded="false">
-                              {{auth()->user()->name}}
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
-                              <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-                            </div>
-                          </div>
-                          @endauth
-                        </td>
-                    </tr>
-                </table>
-            </center>
-        </div>
-        <div  style="width: 100%; border-bottom: 0px solid #d9e1dc;"></div>
-    </div>
-
-
-
-    <!--pas waktu kecil-->
-    <div class="besarilang">
-
-        <div style="float: left;">
-            <div style="padding-left: 0; padding-right: 100px; padding-bottom: 0; font-weight: bold;">
-
-                <div>
-                    <a href="home.html"><img src="{{url('/base')}}/images/logo.png" width="100" style="margin-top:-20px; margin-bottom: 20px;" /></a>
-                </div>
-
-                <a href="home.html">
-                    <div class="menuatas" style="text-align: left; letter-spacing:2px; width:300px; padding: 10px 19px 10px 20px; display: inline-block; font-family:brandon; font-size:15px;">
-                        Home
-                    </div>
-                </a>
-                <a href="story.html">
-                    <div class="menuatas" style="text-align: left;letter-spacing: 2px; width: 300px; padding: 10px 19px 10px 20px;  display: inline-block; font-family:brandon; font-size:15px;">
-                        Story
-                    </div>
-                </a>
-                <a href="product.html">
-                    <div class="menuatas" style="text-align: left;letter-spacing: 2px; width: 300px; padding: 10px 19px 10px 20px;  display: inline-block; font-family:brandon; font-size:15px;">
-                        Product
-                    </div>
-                </a>
-                <a href="outlets.html">
-                    <div class="menuatas" style="text-align: left;letter-spacing: 2px; width: 300px; padding: 10px 19px 10px 20px;  display: inline-block; font-family:brandon; font-size:15px;">
-                        Outlets
-                    </div>
-                </a>
-                <a href="hubungi.html">
-                    <div class="menuatas" style="text-align: left;letter-spacing: 2px; width: 300px; padding: 10px 19px 10px 20px;  display: inline-block; font-family:brandon; font-size:15px;">
-                        Promo
-                    </div>
-                </a>
-                <a href="hubungi.html">
-                    <div class="menuatas" style="text-align: left;letter-spacing: 2px; width: 300px; padding: 10px 19px 10px 20px;  display: inline-block; font-family:brandon; font-size:15px;">
-                        Contact
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!--Bagian Animasi-->
@@ -382,7 +231,9 @@
     <!-- slider stylesheets -->
     <link class="rs-file" href="{{url('/base')}}/css/royal/royalslider/skins/minimal-white/rs-minimal-white.css" rel="stylesheet">
 
-  {{$slot}}
+  <div>
+    {{$slot}}
+  </div>
 
 <!--Bagian OWL-->
 <script src="{{url('/base')}}/js/owl/owl-carousel/owl.carousel.js"></script>

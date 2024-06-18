@@ -1,61 +1,70 @@
 <div>
   <center>
     <div class="location-selector" style="opacity: 1; display: block;z-index: 1;">
-      <div class="container" style="width: 100%; padding: 0; margin: 0;">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                  <div class="sliderContainer fullWidth clearfix" style="position: relative; z-index: 0;">
-                    <div id="full-width-slider" class="royalSlider heroSlider rsMinW  rsHor rsWithBullets" style="padding: 0px; top: 0px; height: 412.688px;">
-                      <div class="rsOverflow grab-cursor" style="width: 915px; height: 413px;">
-                        <div class="rsContainer" style="transition-duration: 600ms; transform: translate3d(-2769px, 0px, 0px); transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);">
-                          <div style="left: 1846px;" class="rsSlide ">
-                            <div class="rsContent">
-                              <div style="position: relative; text-align: center;">
-                                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="margin-left: -1px; margin-top: 0px; width: 916px; height: 413px;">
-                              </div>
-                            </div>
-                          </div>
-                          <div style="left: 2769px;" class="rsSlide ">
-                            <div class="rsContent">
-                              <div style="position: relative; text-align: center;">
-                                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/13.jpg" style="margin-left: -1px; margin-top: 0px; width: 916px; height: 413px;">
-                              </div>
-                            </div>
-                          </div>
-                          <div style="left: 3692px;" class="rsSlide ">
-                            <div class="rsContent" style="visibility: visible; opacity: 1; transition: opacity 400ms ease-in-out 0s;">
-                              <div style="position: relative; text-align: center;">
-                                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/16.jpg" style="margin-left: -1px; margin-top: 0px; width: 916px; height: 413px;">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="rsNav rsBullets">
-                        <div class="rsNavItem rsBullet"><span></span></div>
-                        <div class="rsNavItem rsBullet"><span></span></div>
-                        <div class="rsNavItem rsBullet"><span></span></div>
-                        <div class="rsNavItem rsBullet rsNavSelected"><span></span></div>
-                      </div>
-                      <div class="rsArrow rsArrowLeft" style="display: block;">
-                        <div class="rsArrowIcn"></div>
-                      </div>
-                      <div class="rsArrow rsArrowRight" style="display: block;">
-                        <div class="rsArrowIcn"></div>
-                      </div>
+      <div style="background: #5f492f;">
+        <div class="container" style="width: 100%; padding: 0; margin: 0;">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+
+              </div>
+              <div class="carousel-item">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+
+              </div>
+              <div class="carousel-item">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          {{-- <div class="sliderContainer fullWidth clearfix" style="position: relative; z-index: 0;">
+            <div id="full-width-slider" class="royalSlider heroSlider rsMinW  rsHor rsWithBullets" style="padding: 0px; top: 0px; height: 412.688px;">
+              <div class="rsOverflow grab-cursor" style="width: 100%; height: 413px;">
+                <div class="rsContainer" style="transition-duration: 600ms; transform: translate3d(-2769px, 0px, 0px); transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);">
+                  <div class="rsSlide " style="background-image: url('{{url('/base')}}/data/banner/10.jpg');">
+                    <div class="rsContent">
+                      <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="margin-left: -1px; margin-top: 0px; width: 916px; height: 413px;">
+                    </div>
+                  </div>
+                  <div class="rsSlide " style="background-image: url('{{url('/base')}}/data/banner/10.jpg');">
+                    <div class="rsContent">
+                      <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="margin-left: -1px; margin-top: 0px; width: 916px; height: 413px;">
                     </div>
                   </div>
                 </div>
-                <div class="col-md-1"></div>
+              </div>
+              <div class="rsNav rsBullets">
+                <div class="rsNavItem rsBullet"><span></span></div>
+                <div class="rsNavItem rsBullet"><span></span></div>
+                <div class="rsNavItem rsBullet"><span></span></div>
+                <div class="rsNavItem rsBullet rsNavSelected"><span></span></div>
+              </div>
+              <div class="rsArrow rsArrowLeft" style="display: block;">
+                <div class="rsArrowIcn"></div>
+              </div>
+              <div class="rsArrow rsArrowRight" style="display: block;">
+                <div class="rsArrowIcn"></div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
+
       <!--Bagian panah bawah-->
       <div class="container">
         <div class="row">

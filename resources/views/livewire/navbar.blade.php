@@ -1,60 +1,88 @@
-<div class="navbar-meta navbar navbar-static-top font-cond nav-lg-hidden" role="navigation"
-@if (auth()->check() && auth()->user()->role != 'driver')
-wire:poll.keep-alive
-@endif
->
-  <div class="container-fluid" style="text-align:center;">
-      <div class="nav navbar-nav">
-          <a href="home.html" class="logotengahmuncul jarakataslogo" style="text-transform: uppercase; vertical-align: middle; color: #000; border:0px solid red;">
-              <img src="{{url('/base')}}/images/logo.png" style="position: absolute; top: -30px; left: 0; right: 0; margin: auto;" class="logopaskecil"/>
+<nav class="navbar navbar-expand-lg navbar-dark" style="border-radius: 0;z-index: 999;">
+  <style>
+    .navbar-dark .navbar-nav .nav-link {
+      color: #5f492f;
+    }
+  </style>
+  <div class="container my-4" style="background: #d19f67;border-radius: 8px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav m-0 w-100">
+        <li class="nav-item w-100 text-center" style="font-size: 18px;">
+          <a href="{{url('/')}}" class="nav-link" wire:navigate>
+            Home
           </a>
+        </li>
+        @if (auth()->check() && auth()->user()->role == 'driver')
 
-          <div class="nav-actions" style="border:0px solid; position:absolute; top:0px; right:0px;">
-              <div class="btn-group dropleft">
-                <button type="button" class="toggle-menu visible-xs-inline-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="{{url('/base')}}/images/menu.png">
+        @else
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a href="{{url('product')}}" wire:navigate class="nav-link" style="">Product</a>
+          </li>
+          @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a class="nav-link" style=""
+            @if (auth()->check() && auth()->user()->role != 'driver')
+            href="{{url('/cart')}}"
+            wire:navigate
+            @else
+
+            @click="$('#auth-modal').modal('show')"
+            href="#"
+
+            @endif
+            >Keranjang</a>
+          </li>
+
+          @endif
+        @endif
+        @auth
+          @if (auth()->user()->role != 'driver')
+            @if (auth()->check() && auth()->user()->role == 'admin')
+            <li class="nav-item w-100 text-center" style="font-size: 18px;">
+              <a href="{{url('/outlet')}}" class="nav-link" wire:navigate>
+                Outlet
+              </a>
+            </li>
+
+            @endif
+            <li class="nav-item w-100 text-center" style="font-size: 18px;">
+              <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Transaksi</a>
+            </li>
+            <li class="nav-item w-100 text-center">
+              @guest
+              <a href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
+              font-size: 24px;
+              font-weight: bold;
+              border: 2px solid #5f492f;
+              ">Masuk | Daftar</a>
+              @endguest
+              @auth
+              <div class="dropdown">
+                <button class="btn dropdown-toggle"
+                style="
+                color: #5f492f;
+                background: transparent;
+                font-size: 24px;
+                font-weight: bold;
+                border: 2px solid #5f492f;
+                margin-top: 1px;
+                "
+                type="button" data-toggle="dropdown" aria-expanded="false">
+                  {{auth()->user()->name}}
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{url('/')}}" class="colormenu2" wire:navigate>
-                    Home
-                  </a>
-                  <a class="dropdown-item" href="{{url('product')}}" wire:navigate class="colormenu2" style="">Product</a>
-                  @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
-                  <a class="dropdown-item" class="colormenu2" style=""
-                  @if (auth()->check())
-                  href="{{url('/cart')}}"
-                  wire:navigate
-                  @else
-
-                  @click="$('#auth-modal').modal('show')"
-                  href="#"
-
-                  @endif
-                  >Keranjang</a>
-                  @endif
-                  @if (auth()->check() && auth()->user()->role == 'admin')
-                  <a class="dropdown-item" href="{{url('/outlet')}}" class="colormenu2" wire:navigate>
-                    Outlet
-                  </a>
-                  @endif
-                  <a class="dropdown-item" href="{{url('transaction')}}" class="colormenu2" style="" wire:navigate>Transaksi</a>
-                  @guest
-                  <a class="dropdown-item" href="#" data-target="#auth-modal" data-toggle="modal" class="colormenu2 px-4 py-2 btn-auth" style="
-                  font-size: 24px;
-                  font-weight: bold;
-                  border: 2px solid #5f492f;
-                  ">Masuk | Daftar</a>
-                  @endguest
-                  @auth
                   <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
                   <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
-                  @endauth
                 </div>
               </div>
-          </div>
-
-      </div>
-      <div class="navbar-nav navbar-left nav-tagline hidden-xs">
-      </div>
+              @endauth
+            </li>
+          @endif
+        @endauth
+      </ul>
+    </div>
   </div>
-</div>
+</nav>
