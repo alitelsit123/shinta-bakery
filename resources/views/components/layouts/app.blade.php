@@ -7,7 +7,7 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<meta name="format-detection" content="telephone=no">
-	<meta name="application-name" content="Kampoeng Roti">
+	<meta name="application-name" content="Shinta Bakery">
 	<meta charset="utf-8">
 	<title>Shinta Bakery</title>
 	<meta name="content-language" content="en-gb">
@@ -19,7 +19,7 @@
 			<meta name = "description" content = "Kampoeng Roti doeloe berdiri pada tahun 2012 dan telah memiliki lebih dari 15 tjabang. Owner pendiri Kampoeng Roti ingin mengoebah konsep roti enak tidak haroes mahal.">
 			<meta name = "keywords" content = "Roti, Brownies, Fresh Bread, Cake, Cemilan, Oleh oleh, Surabaya, Gresik, Sidoarjo, Malang, Madura ">
 
-	<meta name="application-name" content="Kampoeng Roti">
+	<meta name="application-name" content="Shinta Bakery">
 	<link rel="icon" type="image/png" href="{{url('/base')}}/images/icon.ico">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">

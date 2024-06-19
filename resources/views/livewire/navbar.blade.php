@@ -19,7 +19,7 @@
 
         @else
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
-            <a href="{{url('product')}}" wire:navigate class="nav-link" style="">Product</a>
+            <a href="{{url('product')}}" wire:navigate class="nav-link" style="">Produk</a>
           </li>
           @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
@@ -49,9 +49,10 @@
 
             @endif
             <li class="nav-item w-100 text-center" style="font-size: 18px;">
-              <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Transaksi</a>
+              <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Pemesanan</a>
             </li>
           @endif
+
         @endauth
         <li class="nav-item w-100 text-center">
           @if(!auth()->check())

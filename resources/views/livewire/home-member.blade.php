@@ -258,7 +258,7 @@
                     </a>
                     <div data-appear-animation="fadeInDown" class="garislurus appear-animation" style="border-bottom:1px solid #fff; margin: 10px 0 10px 0;"></div>
                     <div data-appear-animation="fadeInDown" style="font-family: lato; font-size: 16px; color:#fff ;padding: 0 0  0 0;" class="appear-animation">
-                      Kampoeng Roti - Roti Enak Harga Rakyat
+                      Shinta Bakery - Roti Enak Harga Rakyat
                     </div>
                     <div style="font-family: lato; font-size: 16px; color:#fff ;padding: 0 0  0 0;">
                       <img src="{{url('/base')}}/images/2012.png" alt="">
@@ -276,7 +276,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div style="width: 100%; letter-spacing:3px; padding:15px 0 15px 0; font-family: roboto_medium; font-size: 14px; color:#292929 ;">
-                  Shinta Bakery. All right Reserved @2024. By <a href="../kibocreative.com/index.html" target="_blank" style="color:#292929;">Kibo Creative</a>
+                  Shinta Bakery. All right Reserved @2024. By Rully Anggelia
                 </div>
               </div>
             </div>
