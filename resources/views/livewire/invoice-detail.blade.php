@@ -269,7 +269,7 @@
                             <tr>
                               <th>Gambar</th>
                               <th style="width: 60%;">Nama</th>
-                              <th>Outlet</th>
+                              {{-- <th>Outlet</th> --}}
                               <th>Jumlah</th>
                               <th>Sub Total</th>
                             </tr>
@@ -286,7 +286,7 @@
                                   {{$row->product->name}}
                                 </p>
                               </td>
-                              <td>{{$row->product->outlet->name}}</td>
+                              {{-- <td>{{$row->product->outlet->name}}</td> --}}
                               <td>{{$row->quantity}}</td>
                               <td>{{number_format($row->quantity * $row->price)}}</td>
                             </tr>
