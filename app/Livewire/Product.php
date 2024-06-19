@@ -10,7 +10,7 @@ class Product extends Component
   #[On('reloadproduct')]
   public function render()
   {
-    $list = \App\Models\Product::has('outlet')->latest()->get();
+    $list = \App\Models\Product::latest()->get();
     return view('livewire.product', compact('list'));
   }
 }
