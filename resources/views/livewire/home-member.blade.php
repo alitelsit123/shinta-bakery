@@ -134,7 +134,7 @@
                 <div style="opacity: 1; display: block;">
                   <div>
                     <div class="row">
-                      @foreach (\App\Models\Product::has('outlet')->take(6)->latest()->get() as $row)
+                      @foreach (\App\Models\Product::take(6)->latest()->get() as $row)
                       <div class="col-4">
                         <div class="item" style="text-align:center;">
                           <livewire:product-single :id="$row->id" :key="$row->id">
