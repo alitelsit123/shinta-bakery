@@ -76,7 +76,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Produk</th>
-              <th scope="col">Outlet</th>
+              {{-- <th scope="col">Outlet</th> --}}
               <th scope="col">Jumlah</th>
               <th scope="col">Harga Satuan</th>
               <th scope="col">Aksi</th>
@@ -89,9 +89,9 @@
               <td>
                 {{$row->product->name}}
               </td>
-              <td>
+              {{-- <td>
                 {{$row->product->outlet->name}}
-              </td>
+              </td> --}}
               <td>
                 <input x-ref="quantity" class="form-control" value="{{$row->quantity}}">
               </td>
