@@ -19,7 +19,7 @@
             <small style="color: red;">{{ $message }}</small>
             @enderror
           </div>
-          <div class="form-group mb-3">
+          {{-- <div class="form-group mb-3">
             <label for="exampleFormControlInput1" class="form-label">Outlet</label>
             <select wire:model="outlet_id" class="form-control" id="">
               <option value="" selected></option>
@@ -30,7 +30,7 @@
             @error('outlet_id')
             <small style="color: red;">{{ $message }}</small>
             @enderror
-          </div>
+          </div> --}}
           <div class="form-group mb-3">
             <label for="exampleFormControlInput1" class="form-label">Harga</label>
             <input type="number" wire:model="price" class="form-control" placeholder="Harga" />

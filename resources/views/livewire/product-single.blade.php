@@ -20,7 +20,7 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       @endif
     </div>
     @if (auth()->user() && auth()->user()->role == 'admin')
-    <div class="mt-4 p-3">
+    {{-- <div class="mt-4 p-3">
       <label for="">Outlet</label>
       <select class="form-control" wire:model.live.debounce.250s="outlet_id">
         <option value="" disabled>-- Pilih Outlet --</option>
@@ -28,7 +28,7 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
         <option value="{{$row->id}}">{{$row->name}}</option>
         @endforeach
       </select>
-    </div>
+    </div> --}}
     <div class="mt-4 p-3">
       <label for="">Status</label>
       <select class="form-control" wire:model.live.debounce.250s="status">
@@ -82,9 +82,9 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       <div class="flex align-items-center" style="font-weight:bold; font-size:18px; color:#606064; padding:10px 0 0 0;">
         {{$item->name}}
       </div>
-      <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
+      {{-- <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
         Outlet {{$item->outlet->name}}
-      </div>
+      </div> --}}
       <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
         Rp. {{number_format($item->price)}}
       </div>
