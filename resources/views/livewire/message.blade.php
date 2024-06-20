@@ -54,7 +54,7 @@
   </style>
   <div class="container contact-form">
     <div class="contact-image">
-        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+        <img src="{{url('/')}}/rocket_contact.png" alt="rocket_contact"/>
     </div>
     <form method="post">
         <h3 style="color: #5f492f;">Kritik Saran</h3>
