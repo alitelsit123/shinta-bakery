@@ -52,7 +52,18 @@
               <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Pemesanan</a>
             </li>
           @endif
+          @if (auth()->check() && auth()->user()->role == 'driver')
 
+          @else
+          @if (auth()->check() && auth()->user()->role == 'admin')
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a href="{{url('user')}}" wire:navigate class="nav-link" style="">Pengguna</a>
+          </li>
+          @endif
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a href="{{url('message')}}" wire:navigate class="nav-link" style="">Kirim Pesan</a>
+          </li>
+          @endif
         @endauth
         <li class="nav-item w-100 text-center">
           @if(!auth()->check())
@@ -80,7 +91,7 @@
             type="button" data-toggle="dropdown" aria-expanded="false">
               {{auth()->user()->name}}
             </button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" style="left: 23%;">
               <a class="dropdown-item" href="{{url('profile')}}" wire:navigate>Profile</a>
               <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
             </div>
