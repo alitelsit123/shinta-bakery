@@ -53,9 +53,9 @@
 }
   </style>
   <div class="container contact-form">
-    <div class="contact-image">
+    {{-- <div class="contact-image">
         <img src="{{url('/')}}/rocket_contact.png" alt="rocket_contact"/>
-    </div>
+    </div> --}}
     <form method="post">
         <h3 style="color: #5f492f;">Kritik Saran</h3>
        <div class="row">
