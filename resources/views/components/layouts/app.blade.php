@@ -16,8 +16,8 @@
 
 
 
-			<meta name = "description" content = "Kampoeng Roti doeloe berdiri pada tahun 2012 dan telah memiliki lebih dari 15 tjabang. Owner pendiri Kampoeng Roti ingin mengoebah konsep roti enak tidak haroes mahal.">
-			<meta name = "keywords" content = "Roti, Brownies, Fresh Bread, Cake, Cemilan, Oleh oleh, Surabaya, Gresik, Sidoarjo, Malang, Madura ">
+			<meta name = "description" content = "Shibta Bakery berdiri pada tahun 2015. Pemilik Shinta Bakery ingin mengubah konsep roti enak tidak harus mahal.">
+			<meta name = "keywords" content = "Roti, Brownies, Cake ">
 
 	<meta name="application-name" content="Shinta Bakery">
 	<link rel="icon" type="image/png" href="{{url('/base')}}/images/icon.ico">

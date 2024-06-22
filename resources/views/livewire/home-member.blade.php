@@ -15,11 +15,11 @@
 
               </div>
               <div class="carousel-item">
-                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/2.jpg" style="">
 
               </div>
               <div class="carousel-item">
-                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/13.jpg" style="">
 
               </div>
             </div>
@@ -88,7 +88,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                   <div data-appear-animation="fadeInDown" class="kampungrotihome appear-animation" style="color:#59585d; font-family:coolvetica; line-height: 32px;">
-                    Kampoeng Roti menyediakan berbagai macam jenis roti dengan varian rasa dan harga yang sangat terjangkau sehingga semua orang dapat menikmati setiap dari produk kami. Kampoeng Roti telah memiliki lebih dari 17 cabang yang tersebar diSurabaya dan Sidoarjo, Gresik, Madura dan Malang.
+                    Shinta Bakery menyediakan berbagai macam jenis roti dengan varian rasa dan harga yang sangat terjangkau sehingga semua orang dapat menikmati setiap dari produk kami. Shinta Bakery ini beralamat di Jl. Raya Ngawi - Caruban, RT.07/RW.02, Mugu Raya, Kedungprahu, Kec. Padas, Kabupaten Ngawi, Jawa Timur 63281.
                   </div>
                 </div>
                 <div class="col-md-2"></div>

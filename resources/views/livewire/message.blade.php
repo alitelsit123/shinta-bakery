@@ -71,7 +71,7 @@
       <div data-appear-animation="fadeInDown" style="background-image: url({{url('base')}}/images/mkanan.png); margin-left:-1px;" class="displainlinetop plepet appear-animation fadeInDown appear-animation-visible"></div>
     </div>
     <form method="post">
-        <h3 style="color: #5f492f;">Kritik Saran</h3>
+        
        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">

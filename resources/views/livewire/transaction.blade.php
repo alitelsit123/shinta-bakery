@@ -12,7 +12,7 @@
                     <img src="{{url('/base')}}/images/titik.png" class="titikselect">
                   </div>
                   <div data-appear-animation="fadeInDown" class="displainlinetop productselec appear-animation" style="text-transform: uppercase; font-family:veneer;  color:#ac8b58;opacity: 1;">
-                    Transaksi
+                    Pemesanan
                   </div>
                   <div data-appear-animation="fadeInDown" class="displainlinetop appear-animation">
                     <img src="{{url('/base')}}/images/titik.png" class="titikselect">
