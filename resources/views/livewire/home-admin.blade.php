@@ -119,7 +119,7 @@
       "
       >
         <h5 class="card-title text-center">Total User</h5>
-        <a class="card-text text-center" href="{{url('users')}}" wire:navigate>View User</a>
+        <a class="card-text text-center" href="{{url('user')}}" wire:navigate>View User</a>
       </div>
     </div>
     <div class="card mb-3" style="
