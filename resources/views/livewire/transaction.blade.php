@@ -26,6 +26,9 @@
       </div>
     </div>
   </div>
+  @if (auth()->check() && auth()->user()->role == 'admin')
+  <livewire:add-transaction>
+  @endif
   <div style="padding: 0 0 80px 0;">
     <div class="container">
       <table class="table">
@@ -36,6 +39,8 @@
             <th scope="col">Tanggal</th>
             <th scope="col">Total Pembayaran</th>
             <th scope="col">Status</th>
+            <th scope="col">Tipe Pesanan</th>
+            <th scope="col">Tanggal Pengambilan</th>
             <th scope="col">Driver</th>
             <th scope="col">Alamat</th>
             <th scope="col">Aksi</th>
@@ -46,12 +51,12 @@
           <tr>
             <th scope="row">#{{$row->id}}</th>
             <th scope="row">
-              {{$row->detailProducts()->first()->product->name}}<br />
+              {{$row->detailProducts()->first()->product->name ?? ''}}<br />
               @if ($row->detailProducts()->count() > 1)
               <div>+{{$row->detailProducts()->count() - 1}} Produk</div>
               @endif
             </th>
-            <td>{{\Carbon\Carbon::parse($row->created_at)->format('d, F Y H:i:s')}}</td>
+            <td>{{\Carbon\Carbon::parse($row->date_order)->format('d, F Y H:i:s')}}</td>
             <td>Rp. {{number_format($row->total)}}</td>
             <td >
               @if (auth()->user()->role == 'admin')
@@ -69,6 +74,8 @@
                 @endif
               @endif
             </td>
+            <td>{{$row->type == 'pickup' ? 'Ambil Sendiri': 'Dikirim'}}</td>
+            <td>{{$row->date_pickup}}</td>
             <td>
               @if (auth()->user()->role == 'admin')
               <select id="" @change="$wire.changeCourier({{$row->id}}, $event.target.value)">
@@ -94,6 +101,9 @@
               <a class="btn btn-sm btn-secondary" style="background: #5f492f;" target="_blank" href="{{url('invoice-detail/'.$row->id)}}">Lihat Detail</a>
               @if ($row->status == 'pending' && auth()->user()->role != 'admin')
               <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="{{url('invoice-detail/'.$row->id)}}" wire:navigate>Bayar</a>
+              @endif
+              @if (auth()->user()->role == 'admin')
+              <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="#" wire:confirm wire:click="delete({{$row->id}})">Hapus</a>
               @endif
             </td>
           </tr>

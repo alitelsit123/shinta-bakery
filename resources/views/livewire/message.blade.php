@@ -125,6 +125,7 @@
           <th scope="col">Email</th>
           <th scope="col">Nomor HP</th>
           <th scope="col">Pesan</th>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -134,6 +135,9 @@
           <td>{{$row->email}}</td>
           <td>{{$row->phone}}</td>
           <td>{{$row->message}}</td>
+          <td>
+            <button type="button" class="btn btn-primary" wire:confirm wire:click="delete({{$row->id}})">Hapus</button>
+          </td>
         </tr>
         @endforeach
       </tbody>

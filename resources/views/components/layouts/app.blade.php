@@ -330,11 +330,11 @@
         });
       });
       Livewire.on('pay-now', (event) => {
-        Swal.fire({
-          title: "Sukses!",
-          text: event.message,
-          icon: "success"
-        });
+        // Swal.fire({
+        //   title: "Sukses!",
+        //   text: event.message,
+        //   icon: "success"
+        // });
       });
       Livewire.on('order-received', (event) => {
         Swal.fire({
