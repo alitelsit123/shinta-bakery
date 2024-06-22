@@ -159,6 +159,22 @@
               </div>
             </div>
           </div>
+          <div class="col-md-12">
+            <div class="container d-flex justify-content-center">
+              <div style="border:0px solid red;">
+                <div style="padding: 18px 0 0 0; ">
+                  <a href="{{url('product')}}" wire:navigate>
+                    <div class="displainlinemiddle" style="font-family:kg_solid; padding: 0 12px 0 12px ; font-size:18px;color:#ae8e5d;">
+                      View All Product
+                    </div>
+                    <div class="displainlinemiddle">
+                      <img src="{{url('/base')}}/images/panahkecil.png" alt="">
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!--Bagian backgorund 2-->
