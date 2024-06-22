@@ -34,35 +34,30 @@ class ProductSingle extends Component
     if ($this->description) {
       $this->item->description = $this->description;
       $this->item->save();
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
   }
   public function updatedName() {
     if ($this->name) {
       $this->item->name = $this->name;
       $this->item->save();
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
   }
   public function updatedOutletId() {
     if ($this->outlet_id) {
       $this->item->outlet_id = $this->outlet_id;
       $this->item->save();
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
   }
   public function updatedStatus() {
     if ($this->status) {
       $this->item->status = $this->status;
       $this->item->save();
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
   }
   public function updatedPrice() {
     if ($this->price) {
       $this->item->price = $this->price;
       $this->item->save();
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
   }
   public function updatedImage() {
@@ -71,8 +66,16 @@ class ProductSingle extends Component
       $this->item->image = str_replace('public/','',$path);
       $this->item->save();
       $this->realImage = $this->item->image;
-      $this->dispatch('message-success', id: $this->item->id, message: 'Data berhasil diubah!');
     }
+  }
+  public function delete($id) {
+    \App\Models\Product::whereId($id)->delete();
+    $this->dispatch('alert-success', message: 'Data berhasil dihapus!');
+    $this->dispatch('reloadproduct')->to(Product::class);
+  }
+  public function updateAction() {
+    $this->dispatch('alert-success', message: 'Data berhasil diubah!');
+    $this->dispatch('reloadproduct')->to(Product::class);
   }
   public function mount($id) {
     $this->item = \App\Models\Product::findOrFail($id);

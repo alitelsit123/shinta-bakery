@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\Attributes\Validate;
+use Livewire\Attributes\On;
 
 class Message extends Component
 {
@@ -25,6 +26,12 @@ class Message extends Component
     ]);
     $this->dispatch('alert-success',message: "Pesan dikirim!");
   }
+  public function delete($id) {
+    \App\Models\Message::whereId($id)->delete();
+    $this->dispatch('alert-success', message: "Pesan dihapus!");
+    $this->dispatch('reloadmsg');
+  }
+  #[On('reloadmsg')]
   public function render()
   {
     return view('livewire.message');

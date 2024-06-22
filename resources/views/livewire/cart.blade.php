@@ -28,48 +28,6 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-12" style="margin:20px 0 20px 0;">
-        <div class="card text-center">
-          <div class="card-header" style="color: white;background: #5f492f;">
-            Informasi Pemesanan
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>Nama: </div>
-                    <div>{{auth()->user()->name}}</div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>Email: </div>
-                    <div>{{auth()->user()->email}}</div>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>Nomor HP: </div>
-                    <div>{{auth()->user()->phone}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>Alamat Pengiriman: </div>
-                    <div>
-                      @if (auth()->user()->address)
-                      {{auth()->user()->address}}
-                      @else
-                      <span style="color: red;">Alamat Belum diisi silahkan tambahkan alamat terlebih dahulu.</span><br />
-                      <a href="{{url('profile')}}">Edit Alamat</a>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col-md-8">
         <table class="table">
           <thead class="thead-dark">
@@ -126,9 +84,9 @@
           </div>
           @if (auth()->check() && auth()->user()->carts()->count() > 0)
           <div class="card-footer font-weight-bold">
-            <button type="button" class="btn btn-block btn-primary" wire:click="checkout">
+            <a href="{{url('checkout')}}" class="btn btn-block btn-primary" wire:navigate>
               Checkout
-            </button>
+            </a>
           </div>
           @endif
         </div>

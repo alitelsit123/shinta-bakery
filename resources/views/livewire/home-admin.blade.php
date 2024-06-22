@@ -33,18 +33,28 @@
     </div>
   </div>
   <hr class="mb-4" />
-  <div class="d-flex align-items-start justify-content-center" style="column-gap: 1rem;">
+  <div class="d-flex align-items-stretch justify-content-center" style="column-gap: 1rem;">
     <div class="card mb-3" style="
       width: 18rem;
       border-color: #5f492f;
       border-width: 2px;
       ">
-      <div class="card-header text-white font-weight-bold"
-      style="background: #5f492f;color: white;"
-      >Order Baru</div>
-      <div class="card-body text-secondary">
-        <h5 class="card-title">{{\App\Models\Transaction::whereStatus('waiting')->count()}}</h5>
-        <p class="card-text">Lihat Semua</p>
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >Welcome</div>
+      <div class="card-body text-secondary text-center"
+      style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      "
+      >
+        <h5 class="card-title text-center">{{auth()->user()->name}}</h5>
+        <p class="card-text text-center">Update Profile</p>
       </div>
     </div>
     <div class="card mb-3" style="
@@ -52,14 +62,106 @@
       border-color: #5f492f;
       border-width: 2px;
       ">
-      <div class="card-header text-white"
-      style="background: #5f492f;color: white;"
-      >Pendapatan</div>
-      <div class="card-body text-secondary">
-        <h5 class="card-title">Rp. {{number_format(\App\Models\Transaction::whereStatus('waiting')->sum('total'))}}</h5>
-        <p class="card-text">Lihat Semua</p>
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >{{\App\Models\Product::count()}}</div>
+      <div class="card-body text-secondary text-center"
+      style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      "
+      >
+        <h5 class="card-title text-center">Total Produk</h5>
+        <a class="card-text text-center" href="{{url('product')}}" wire:navigate>View Produk</a>
       </div>
     </div>
+    <div class="card mb-3" style="
+      width: 18rem;
+      border-color: #5f492f;
+      border-width: 2px;
+      ">
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >{{\App\Models\Transaction::whereIn('status',['pending','confirmed','waiting'])->count()}}</div>
+      <div class="card-body text-secondary text-center">
+        <h5 class="card-title text-center">Total Pesanan</h5>
+        <a class="card-text text-center" href="{{url('transaction')}}" wire:navigate>View Pesanan</a>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex align-items-stretch justify-content-center" style="column-gap: 1rem;">
+    <div class="card mb-3" style="
+      width: 18rem;
+      border-color: #5f492f;
+      border-width: 2px;
+      ">
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >{{\App\Models\User::count()}}</div>
+      <div class="card-body text-secondary text-center"
+      style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      "
+      >
+        <h5 class="card-title text-center">Total User</h5>
+        <a class="card-text text-center" href="{{url('users')}}" wire:navigate>View User</a>
+      </div>
+    </div>
+    <div class="card mb-3" style="
+      width: 18rem;
+      border-color: #5f492f;
+      border-width: 2px;
+      ">
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >{{\App\Models\Message::count()}}</div>
+      <div class="card-body text-secondary text-center"
+      style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      "
+      >
+        <h5 class="card-title text-center">Total Pesan</h5>
+        <a class="card-text text-center" href="{{url('message')}}" wire:navigate>View Pesan</a>
+      </div>
+    </div>
+    {{-- <div class="card mb-3" style="
+      width: 18rem;
+      border-color: #5f492f;
+      border-width: 2px;
+      ">
+      <div class="card-header text-center font-weight-bold"
+      style="
+      color: #5f492f;
+      background: white!important;
+      font-size: 18px;
+      "
+      >{{\App\Models\Transaction::whereIn('status',['pending','confirmed','waiting'])->count()}}</div>
+      <div class="card-body text-secondary text-center">
+        <h5 class="card-title text-center">Total Pesanan</h5>
+        <p class="card-text text-center">View Pesanan</p>
+      </div>
+    </div> --}}
   </div>
   <hr class="mb-4" />
   <h1 class="mb-5 text-center"
