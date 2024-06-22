@@ -54,7 +54,7 @@
       "
       >
         <h5 class="card-title text-center">{{auth()->user()->name}}</h5>
-        <p class="card-text text-center">Update Profile</p>
+        <a href="{{url('profile')}}" wire:navigate class="card-text text-center">Update Profile</a>
       </div>
     </div>
     <div class="card mb-3" style="
