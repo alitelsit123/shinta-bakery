@@ -59,12 +59,10 @@
                 <option value="delivery">Kirim</option>
               </select>
             </div>
-            @if ($type == 'pickup')
             <div class="form-group mb-3 text-left">
               <label for="exampleFormControlInput1" class="form-label">Tanggal Pengambilan</label>
               <input type="datetime-local" wire:model.live="date_pickup" class="form-control" id="" />
             </div>
-            @endif
             <div class="form-group mb-3 text-left">
               <label for="exampleFormControlInput1" class="form-label">Alamat Lengkap</label>
               <textarea class="form-control" id="" wire:model.live="address" rows="5"></textarea>
