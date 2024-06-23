@@ -40,9 +40,10 @@ class Checkout extends Component
       'total' => $total,
       'user_id' => auth()->id(),
       'confirmed_at' => null,
-      'date_order' => $this->date_order
+      'date_order' => $this->date_order,
+      'type' => $this->type
     ]);
-    if ($this->type == 'pickup') {
+    if ($this->date_pickup) {
       $tx->date_pickup = $this->date_pickup;
       $tx->save();
     }
