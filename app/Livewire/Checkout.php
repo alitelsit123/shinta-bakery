@@ -18,7 +18,7 @@ class Checkout extends Component
     $this->dispatch('reloadchekout');
   }
   public function checkout() {
-    if ($this->type == 'pickup' && !$this->date_pickup) {
+    if (!$this->date_pickup) {
       $this->dispatch('alert-error', message: "Silahkan pilih tanggal pengambilan!");
       return;
     }

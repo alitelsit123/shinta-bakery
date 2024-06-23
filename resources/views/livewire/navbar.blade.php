@@ -41,12 +41,13 @@
         @auth
           @if (auth()->user()->role != 'driver')
             @if (auth()->check() && auth()->user()->role == 'admin')
+            {{--
             <li class="nav-item w-100 text-center" style="font-size: 18px;">
               <a href="{{url('/outlet')}}" class="nav-link" wire:navigate>
                 Outlet
               </a>
             </li>
-
+            --}}
             @endif
             <li class="nav-item w-100 text-center" style="font-size: 18px;">
               <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Pemesanan</a>
