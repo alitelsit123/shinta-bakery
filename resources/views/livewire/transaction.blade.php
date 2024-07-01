@@ -94,7 +94,7 @@
             </td>
             <td>
               <div style="width: 250px;">
-                {{$row->user->address ?? ''}}
+                {{$row->delivery_address ? $row->delivery_address: ($row->user->address ?? '')}}
               </div>
             </td>
             <td>
