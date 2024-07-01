@@ -15,11 +15,11 @@
 
               </div>
               <div class="carousel-item">
-                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/2.jpg" style="">
 
               </div>
               <div class="carousel-item">
-                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/10.jpg" style="">
+                <img class="rsImg rsMainSlideImage" src="{{url('/base')}}/data/banner/13.jpg" style="">
 
               </div>
             </div>
@@ -88,7 +88,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                   <div data-appear-animation="fadeInDown" class="kampungrotihome appear-animation" style="color:#59585d; font-family:coolvetica; line-height: 32px;">
-                    Kampoeng Roti menyediakan berbagai macam jenis roti dengan varian rasa dan harga yang sangat terjangkau sehingga semua orang dapat menikmati setiap dari produk kami. Kampoeng Roti telah memiliki lebih dari 17 cabang yang tersebar diSurabaya dan Sidoarjo, Gresik, Madura dan Malang.
+                    Shinta Bakery menyediakan berbagai macam jenis roti dengan varian rasa dan harga yang sangat terjangkau sehingga semua orang dapat menikmati setiap dari produk kami. Shinta Bakery ini beralamat di Jl. Raya Ngawi - Caruban, RT.07/RW.02, Mugu Raya, Kedungprahu, Kec. Padas, Kabupaten Ngawi, Jawa Timur 63281.
                   </div>
                 </div>
                 <div class="col-md-2"></div>
@@ -274,7 +274,7 @@
                     </a>
                     <div data-appear-animation="fadeInDown" class="garislurus appear-animation" style="border-bottom:1px solid #fff; margin: 10px 0 10px 0;"></div>
                     <div data-appear-animation="fadeInDown" style="font-family: lato; font-size: 16px; color:#fff ;padding: 0 0  0 0;" class="appear-animation">
-                      Kampoeng Roti - Roti Enak Harga Rakyat
+                      Shinta Bakery - Roti Enak Harga Rakyat
                     </div>
                     <div style="font-family: lato; font-size: 16px; color:#fff ;padding: 0 0  0 0;">
                       <img src="{{url('/base')}}/images/2012.png" alt="">
@@ -292,7 +292,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div style="width: 100%; letter-spacing:3px; padding:15px 0 15px 0; font-family: roboto_medium; font-size: 14px; color:#292929 ;">
-                  Shinta Bakery. All right Reserved @2024. By <a href="../kibocreative.com/index.html" target="_blank" style="color:#292929;">Kibo Creative</a>
+                  Shinta Bakery. All right Reserved @2024. By Rully Anggelia
                 </div>
               </div>
             </div>

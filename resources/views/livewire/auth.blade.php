@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="authLabel">Masuk / Daftar</h5>
+          <h5 class="modal-title" id="authLabel">Login / Daftar</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -12,7 +12,7 @@
         <div class="modal-body">
           <ul class="nav nav-pills">
             <li class="nav-item">
-              <a class="nav-link active" href="#" data-toggle="tab" data-target="#nav-login">Masuk</a>
+              <a class="nav-link active" href="#" data-toggle="tab" data-target="#nav-login">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="tab" data-target="#nav-register">Daftar</a>
@@ -39,7 +39,7 @@
                 <hr />
                 <div class="d-flex align-items-center justify-content-end">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary ml-3">Masuk</button>
+                  <button type="submit" class="btn btn-primary ml-3">Login</button>
                 </div>
               </form>
             </div>

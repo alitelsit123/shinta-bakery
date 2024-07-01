@@ -45,7 +45,7 @@
       background: white!important;
       font-size: 18px;
       "
-      >Welcome</div>
+      >Welcome!</div>
       <div class="card-body text-secondary text-center"
       style="
       display: flex;

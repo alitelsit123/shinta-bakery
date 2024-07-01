@@ -7,7 +7,7 @@
                 <img src="{{url('base')}}/images/titik.png" class="titikselect">
             </div>
             <div data-appear-animation="fadeInDown" class="displainlinetop productselec appear-animation fadeInDown appear-animation-visible" style="text-transform: uppercase; font-family:veneer;  color:#ac8b58;">
-              PENGGUNA
+              USER
             </div>
             <div class="displainlinetop">
                 <img data-appear-animation="fadeInDown" src="{{url('base')}}/images/titik.png" class="titikselect appear-animation fadeInDown appear-animation-visible">
@@ -25,7 +25,7 @@
           <th scope="col">Nama</th>
           <th scope="col">Email</th>
           <th scope="col">Nomor HP</th>
-          <th scope="col">Role</th>
+          <th scope="col">Tipe</th>
           <th scope="col">Alamat</th>
           <th scope="col">Aksi</th>
         </tr>

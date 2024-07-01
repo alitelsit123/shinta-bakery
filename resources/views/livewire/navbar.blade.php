@@ -19,7 +19,7 @@
 
         @else
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
-            <a href="{{url('product')}}" wire:navigate class="nav-link" style="">Product</a>
+            <a href="{{url('product')}}" wire:navigate class="nav-link" style="">Produk</a>
           </li>
           @if ((auth()->check() && auth()->user()->role != 'admin') || !auth()->check())
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
@@ -50,7 +50,7 @@
             --}}
             @endif
             <li class="nav-item w-100 text-center" style="font-size: 18px;">
-              <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Transaksi</a>
+              <a href="{{url('transaction')}}" class="nav-link" style="" wire:navigate>Pemesanan</a>
             </li>
           @endif
           @if (auth()->check() && auth()->user()->role == 'driver')
@@ -58,7 +58,7 @@
           @else
           @if (auth()->check() && auth()->user()->role == 'admin')
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
-            <a href="{{url('user')}}" wire:navigate class="nav-link" style="">Pengguna</a>
+            <a href="{{url('user')}}" wire:navigate class="nav-link" style="">User</a>
           </li>
           @endif
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
@@ -74,7 +74,7 @@
           font-weight: bold;
           border: 2px solid #5f492f;
           margin-top: 8px;
-          ">Masuk | Daftar</a>
+          ">Login | Daftar</a>
 
           @endif
 
