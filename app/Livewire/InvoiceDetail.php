@@ -7,6 +7,9 @@ use Livewire\Component;
 class InvoiceDetail extends Component
 {
   public $transaction;
+  public function cetak() {
+
+  }
   public function getToken() {
     if (!$this->transaction->token) {
       $midtrans = new \App\Midtrans\CreateSnapTokenService($this->transaction);

@@ -58,6 +58,9 @@
           @else
           @if (auth()->check() && auth()->user()->role == 'admin')
           <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a href="{{url('laporan')}}" class="nav-link" style="" wire:navigate>Laporan</a>
+          </li>
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
             <a href="{{url('user')}}" wire:navigate class="nav-link" style="">User</a>
           </li>
           @endif

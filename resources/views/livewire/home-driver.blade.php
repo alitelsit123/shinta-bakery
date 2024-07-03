@@ -38,7 +38,7 @@
                 Nama: {{$transaction->user->name}}<br>
                 Email: {{$transaction->user->email}}<br>
                 Nomor HP: {{$transaction->user->phone}}<br>
-                Alamat: {{$transaction->user->address}}
+                Alamat: {{$transaction->delivery_address ?? $transaction->user->address}}
               </address>
               @if (in_array($transaction->status, ['pending','waiting']))
                 <div style="font-weight: bold;">
@@ -97,9 +97,11 @@
           <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
             <div class="invoice-details" style="font-size: 18px;">
               <div class="invoice-num">
-                <div>Invoice - #{{$transaction->id}}</div>
-                <div>{{$transaction->created_at->format('d, F Y H:i:s')}}</div>
-                <div class="
+                <div style="font-size: 14px;">Invoice - #{{$transaction->id}}</div>
+                <div style="font-size: 14px;">Tanggal Pemesanan {{$transaction->created_at->format('d, F Y H:i:s')}}</div>
+                <div style="font-size: 14px;">Tanggal Pengiriman {{\Carbon\Carbon::parse($transaction->date_pickup)->format('d, F Y H:i:s')}}</div>
+                <hr />
+                <div style="font-size: 14px;" class="
                 badge
                 @if(in_array($transaction->status, ['pending','waiting']))
                 badge-warning
@@ -117,13 +119,77 @@
               </div>
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-12 px-5">
             @if ($transaction->status == 'settlement')
             <div class="alert alert-success">Pesanan sudah diterima, terimakasih</div>
             @else
-            <button class="btn btn-success btn-block mt-2">Tandai Sudah Diterima Pelanggan</button>
+            <h4>Diterima Oleh ?</h4>
+            <textarea id="" rows="3" wire:model.live="deliveredto" class="form-control"></textarea>
+            <button class="btn btn-success btn-block mt-2" wire:click="finishConfirmation({{$transaction->id}})">Tandai Sudah Diterima Pelanggan</button>
             @endif
           </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="invoice-body">
+          <!-- Row start -->
+          <div class="row gutters">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="table-responsive">
+                <table class="table custom-table m-0">
+                  <thead>
+                    <tr>
+                      <th>Gambar</th>
+                      <th style="width: 60%;">Nama</th>
+                      {{-- <th>Outlet</th> --}}
+                      <th>Jumlah</th>
+                      <th>Sub Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($transaction->detailProducts as $row)
+                    <tr>
+                      <td>
+                        <img src="{{url('storage/'.$row->product->image)}}" alt="" srcset="" style="width: 40px; height: 40px;" />
+                      </td>
+                      <td>
+
+                        <p class="m-0 text-muted">
+                          {{$row->product->name}}
+                        </p>
+                      </td>
+                      {{-- <td>{{$row->product->outlet->name}}</td> --}}
+                      <td>{{$row->quantity}}</td>
+                      <td>{{number_format($row->quantity * $row->price)}}</td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                      <td colspan="4">
+                        <div class="d-flex align-items-end justify-content-end">
+                          <div class=" p-2">
+                            <p>
+                              Sub Total<br>
+                            </p>
+                            <h5 class=""><strong>Total</strong></h5>
+                          </div>
+                          <div class=" p-2">
+                            <p class=""><strong>Rp. {{number_format($transaction->subtotal)}}</strong></p>
+                            <h5 class=""><strong>Rp. {{number_format($transaction->total)}}</strong></h5>
+                          </div>
+                        </div>
+                        @if ($transaction->status != 'pending')
+                        <div class="d-flex justify-content-end">
+                          <button class="btn btn-default" style="font-weight: bold;color: #28a745;">SUDAH DIBAYAR</button>
+                        </div>
+                        @endif
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Row end -->
         </div>
       </div>
     </div>

@@ -24,7 +24,52 @@ Route::get('/message', \App\Livewire\Message::class);
 Route::get('/user', \App\Livewire\User::class);
 Route::get('/checkout', \App\Livewire\Checkout::class);
 Route::get('/invoice-detail/{transaction_id}', \App\Livewire\InvoiceDetail::class);
+Route::get('/laporan', \App\Livewire\Laporan::class);
+Route::get('/export-transactions', function() {
+  $startDate = request('start_date');
+  $endDate = request('end_date');
+  $fileName = 'transactions.csv';
+  $transactions = \App\Models\Transaction::with(['user', 'detailProducts.product', 'courier'])->get();
 
+  $headers = array(
+      "Content-type"        => "text/csv",
+      "Content-Disposition" => "attachment; filename=$fileName",
+      "Pragma"              => "no-cache",
+      "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+      "Expires"             => "0"
+  );
+
+  $columns = array('#ID', 'Nama Pemesan', 'Produk', 'Tanggal', 'Total Pembayaran', 'Status', 'Tipe Pesanan', 'Tanggal Pengambilan / Pengiriman', 'Driver', 'Alamat');
+
+  $callback = function() use($transactions, $columns) {
+      $file = fopen('php://output', 'w');
+      fputcsv($file, $columns);
+
+      foreach ($transactions as $transaction) {
+          $productNames = $transaction->detailProducts->pluck('product.name')->toArray();
+          $productNamesString = implode(", ", $productNames);
+
+          $row = [
+              '#'.$transaction->id,
+              $transaction->user->name,
+              $productNamesString . (count($productNames) > 1 ? " +".(count($productNames) - 1)." Produk" : ""),
+              \Carbon\Carbon::parse($transaction->date_order)->format('d, F Y H:i:s'),
+              'Rp. '.number_format($transaction->total),
+              $transaction->status,
+              $transaction->type == 'pickup' ? 'Ambil Sendiri' : 'Dikirim',
+              $transaction->date_pickup,
+              $transaction->courier ? $transaction->courier->name : '(Belum Diassign)',
+              $transaction->delivery_address ? $transaction->delivery_address : ($transaction->user->address ?? '')
+          ];
+
+          fputcsv($file, $row);
+      }
+
+      fclose($file);
+  };
+
+  return \Illuminate\Support\Facades\Response::stream($callback, 200, $headers);
+});
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class,'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class,'register']);

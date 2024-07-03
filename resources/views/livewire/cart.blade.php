@@ -51,7 +51,7 @@
                 {{$row->product->outlet->name}}
               </td> --}}
               <td>
-                <input x-ref="quantity" class="form-control" value="{{$row->quantity}}">
+                <input x-ref="quantity" type="number" class="form-control" value="{{$row->quantity}}">
               </td>
               <td>Rp. {{number_format($row->product->price)}}</td>
               <td>
@@ -62,6 +62,14 @@
             @endforeach
           </tbody>
         </table>
+        <div class="card">
+          <div class="card-header" style="color: white;background: #5f492f;">
+            Catatan
+          </div>
+          <div class="card-body">
+            <textarea id="" wire:model.live="note" rows="4" class="form-control">{{$note}}</textarea>
+          </div>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="card text-center">

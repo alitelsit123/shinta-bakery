@@ -23,6 +23,8 @@ class Transaction extends Model
     'type',
     'date_order',
     'date_pickup',
+    'note',
+    'delivered_to'
   ];
   public function user() {
     return $this->belongsTo('App\Models\User', 'user_id');

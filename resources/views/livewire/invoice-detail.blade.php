@@ -172,7 +172,7 @@
                           {{$transaction->user->name}}<br>
                           {{$transaction->user->email}}<br>
                           {{$transaction->user->phone}}<br>
-                          {{$transaction->user->address}}
+                          {{$transaction->delivery_address ?? $transaction->user->address}}
                         </address>
                         @if (in_array($transaction->status, ['pending','waiting']))
                           <div style="font-weight: bold;">
@@ -223,6 +223,10 @@
                             </span>
                             <hr />
                             Pesanan Selesai
+                            @if ($transaction->delivered_to)
+                            <hr />
+                            Diterima Oleh <span style="color: #00bb42;">{{$transaction->delivered_to}}</span>
+                            @endif
                             @endif
                           </div>
                         @endif
@@ -255,6 +259,7 @@
                       @else
                       <button class="btn btn-success btn-block mt-2" wire:click="finishConfirmation({{$transaction->id}})">Terima Pesanan</button>
                       @endif
+                      <button class="btn btn-warning btn-block mt-2" @click="window.print()">Cetak Invoice</button>
                     </div>
                   </div>
                   <!-- Row end -->
