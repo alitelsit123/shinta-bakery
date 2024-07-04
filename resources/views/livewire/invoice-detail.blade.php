@@ -260,7 +260,9 @@
                       @if ($transaction->status == 'settlement' && $transaction->delivered_by_user)
                       <div class="alert alert-success">Pesanan sudah diterima, terimakasih</div>
                       @else
-                      <button class="btn btn-success btn-block mt-2" wire:click="finishConfirmation({{$transaction->id}})">Terima Pesanan</button>
+                        @if (auth()->id() == $transaction->user_id)
+                        <button class="btn btn-success btn-block mt-2" wire:click="finishConfirmation({{$transaction->id}})">Terima Pesanan</button>
+                        @endif
                       @endif
                       <button class="btn btn-warning btn-block mt-2" @click="window.print()">Cetak Invoice</button>
                     </div>
