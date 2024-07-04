@@ -36,11 +36,11 @@
           <tr>
             <th scope="col">#ID</th>
             <th scope="col">Produk</th>
-            <th scope="col">Tanggal</th>
+            <th scope="col">Tanggal Pemesanan</th>
             <th scope="col">Total Pembayaran</th>
             <th scope="col">Status</th>
             <th scope="col">Tipe Pesanan</th>
-            <th scope="col">Tanggal Pengambilan</th>
+            <th scope="col">Tanggal Pengambilan / pengiriman</th>
             <th scope="col">Driver</th>
             <th scope="col">Alamat</th>
             <th scope="col">Aksi</th>
