@@ -43,6 +43,7 @@
             <th scope="col">Tanggal Pengambilan</th>
             <th scope="col">Driver</th>
             <th scope="col">Alamat</th>
+            <th scope="col">Catatan</th>
             <th scope="col">Aksi</th>
           </tr>
         </thead>
@@ -95,6 +96,11 @@
             <td>
               <div style="width: 250px;">
                 {{$row->delivery_address ? $row->delivery_address: ($row->user->address ?? '')}}
+              </div>
+            </td>
+            <td>
+              <div style="width: 130px;">
+                {{$row->note}}
               </div>
             </td>
             <td>
