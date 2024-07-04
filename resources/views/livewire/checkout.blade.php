@@ -60,8 +60,8 @@
               </select>
             </div>
             <div class="form-group mb-3 text-left">
-              <label for="exampleFormControlInput1" class="form-label">Tanggal Pengambilan</label>
-              <input type="datetime-local" wire:model.live="date_pickup" class="form-control" id="" />
+              <label for="exampleFormControlInput1" class="form-label">Tanggal {{$type == 'pickup' ? 'Pengambilan': ($type == 'delivery' ? 'Pengiriman': '')}}</label>
+              <input type="datetime-local" min="{{now()->addDays(1)}}" wire:model.live="date_pickup" class="form-control" id="" />
             </div>
             <div class="form-group mb-3 text-left">
               <label for="exampleFormControlInput1" class="form-label">Alamat Lengkap</label>
@@ -100,6 +100,12 @@
         </div>
       </div>
       <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header" style="color: white;background: #5f492f;">Note</div>
+          <div class="card-body">
+            {{auth()->user()->carts()->first()->note ?? null}}
+          </div>
+        </div>
         <div class="card text-center">
           <div class="card-header" style="color: white;background: #5f492f;">
             Informasi Produk
