@@ -173,6 +173,13 @@
                           {{$transaction->user->email}}<br>
                           {{$transaction->user->phone}}<br>
                           {{$transaction->delivery_address ?? $transaction->user->address}}
+                          @if ($transaction->note)
+                          <div class="alert">
+                            Catatan: -- {{$transaction->note}} --
+                          </div>
+                          @else
+                          -- Tidak ada catatan --
+                          @endif
                         </address>
                         @if (in_array($transaction->status, ['pending','waiting']))
                           <div style="font-weight: bold;">

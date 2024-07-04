@@ -39,6 +39,7 @@
                 Email: {{$transaction->user->email}}<br>
                 Nomor HP: {{$transaction->user->phone}}<br>
                 Alamat: {{$transaction->delivery_address ?? $transaction->user->address}}
+                Catatan: {{$transaction->note}}
               </address>
               @if (in_array($transaction->status, ['pending','waiting']))
                 <div style="font-weight: bold;">

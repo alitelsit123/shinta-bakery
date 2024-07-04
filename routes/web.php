@@ -39,7 +39,7 @@ Route::get('/export-transactions', function() {
       "Expires"             => "0"
   );
 
-  $columns = array('#ID', 'Nama Pemesan', 'Produk', 'Tanggal', 'Total Pembayaran', 'Status', 'Tipe Pesanan', 'Tanggal Pengambilan / Pengiriman', 'Driver', 'Alamat');
+  $columns = array('#ID', 'Nama Pemesan', 'Produk', 'Tanggal', 'Total Pembayaran', 'Status', 'Tipe Pesanan', 'Tanggal Pengambilan / Pengiriman', 'Driver', 'Alamat', 'Catatan');
 
   $callback = function() use($transactions, $columns) {
       $file = fopen('php://output', 'w');
@@ -59,7 +59,8 @@ Route::get('/export-transactions', function() {
               $transaction->type == 'pickup' ? 'Ambil Sendiri' : 'Dikirim',
               $transaction->date_pickup,
               $transaction->courier ? $transaction->courier->name : '(Belum Diassign)',
-              $transaction->delivery_address ? $transaction->delivery_address : ($transaction->user->address ?? '')
+              $transaction->delivery_address ? $transaction->delivery_address : ($transaction->user->address ?? ''),
+              $transaction->note
           ];
 
           fputcsv($file, $row);

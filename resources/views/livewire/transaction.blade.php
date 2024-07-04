@@ -78,7 +78,7 @@
             <td>{{$row->type == 'pickup' ? 'Ambil Sendiri': 'Dikirim'}}</td>
             <td>{{$row->date_pickup}}</td>
             <td>
-              @if (auth()->user()->role == 'admin')
+              @if (auth()->user()->role == 'admin' && $row->type != 'pickup')
               <select id="" @change="$wire.changeCourier({{$row->id}}, $event.target.value)">
                 <option value="" disabled selected>-- Pilih Kurir --</option>
                 @foreach (\App\Models\User::whereRole('driver')->get() as $rowCourier)
@@ -89,7 +89,11 @@
                 @if ($row->courier)
                 {{$row->courier->name}}
                 @else
-                (Belum Diassign)
+                  @if ($row->type == 'pickup')
+                  Diambil sendiri
+                  @else
+                  (Belum Diassign)
+                  @endif
                 @endif
               @endif
             </td>
