@@ -38,6 +38,7 @@ class Checkout extends Component
       'delivery_pinpoint' => auth()->user()->address_pinpoint,
       'subtotal' => $total,
       'total' => $total,
+      'note' => ($myCarts->first()->note ?? null),
       'user_id' => auth()->id(),
       'confirmed_at' => null,
       'date_order' => $this->date_order,
