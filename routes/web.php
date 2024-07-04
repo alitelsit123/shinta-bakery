@@ -39,7 +39,7 @@ Route::get('/export-transactions', function() {
       "Expires"             => "0"
   );
 
-  $columns = array('#ID', 'Nama Pemesan', 'Produk', 'Tanggal', 'Total Pembayaran', 'Status', 'Tipe Pesanan', 'Tanggal Pengambilan / Pengiriman', 'Driver', 'Alamat', 'Catatan');
+  $columns = array('#ID', 'Nama Pemesan', 'Produk', 'Tanggal', 'Total Pembayaran');
 
   $callback = function() use($transactions, $columns) {
       $file = fopen('php://output', 'w');
@@ -54,13 +54,7 @@ Route::get('/export-transactions', function() {
               $transaction->user->name,
               $productNamesString . (count($productNames) > 1 ? " +".(count($productNames) - 1)." Produk" : ""),
               \Carbon\Carbon::parse($transaction->date_order)->format('d, F Y H:i:s'),
-              'Rp. '.number_format($transaction->total),
-              $transaction->status,
-              $transaction->type == 'pickup' ? 'Ambil Sendiri' : 'Dikirim',
-              $transaction->date_pickup,
-              $transaction->courier ? $transaction->courier->name : '(Belum Diassign)',
-              $transaction->delivery_address ? $transaction->delivery_address : ($transaction->user->address ?? ''),
-              $transaction->note
+              'Rp. '.number_format($transaction->total)
           ];
 
           fputcsv($file, $row);

@@ -41,6 +41,9 @@
           </div>
         </div>
       </div>
+      <hr />
+      <h4 class="text-center">Total Rp. {{number_format($list->sum('total'))}}</h4>
+      <hr />
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -49,12 +52,6 @@
             <th scope="col">Produk</th>
             <th scope="col">Tanggal</th>
             <th scope="col">Total Pembayaran</th>
-            <th scope="col">Status</th>
-            <th scope="col">Tipe Pesanan</th>
-            <th scope="col">Tanggal Pengambilan / Pengiriman</th>
-            <th scope="col">Driver</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Catatan</th>
             {{-- <th scope="col">Aksi</th> --}}
           </tr>
         </thead>
@@ -71,41 +68,6 @@
             </th>
             <td>{{\Carbon\Carbon::parse($row->date_order)->format('d, F Y H:i:s')}}</td>
             <td>Rp. {{number_format($row->total)}}</td>
-            <td >
-              @if ($row->status == 'settlement')
-              <div class="">{{$row->status}}</div>
-              @else
-              <div class="">{{$row->status}}</div>
-              @endif
-            </td>
-            <td>{{$row->type == 'pickup' ? 'Ambil Sendiri': 'Dikirim'}}</td>
-            <td>{{$row->date_pickup}}</td>
-            <td>
-              @if ($row->courier)
-              {{$row->courier->name}}
-              @else
-              (Belum Diassign)
-              @endif
-            </td>
-            <td>
-              <div style="width: 250px;">
-                {{$row->delivery_address ? $row->delivery_address: ($row->user->address ?? '')}}
-              </div>
-            </td>
-            <td>
-              <div style="width: 130px;">
-                {{$row->note}}
-              </div>
-            </td>
-            {{-- <td>
-              <a class="btn btn-sm btn-secondary" style="background: #5f492f;" target="_blank" href="{{url('invoice-detail/'.$row->id)}}">Lihat Detail</a>
-              @if ($row->status == 'pending' && auth()->user()->role != 'admin')
-              <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="{{url('invoice-detail/'.$row->id)}}" wire:navigate>Bayar</a>
-              @endif
-              @if (auth()->user()->role == 'admin')
-              <a class="btn btn-sm btn-secondary" style="background: #5f492f;" href="#" wire:confirm wire:click="delete({{$row->id}})">Hapus</a>
-              @endif
-            </td> --}}
           </tr>
           @endforeach
         </tbody>
