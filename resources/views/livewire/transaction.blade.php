@@ -98,12 +98,12 @@
               @endif
             </td>
             <td>
-              <div style="width: 250px;">
+              <div style="max-width: 250px;">
                 {{$row->delivery_address ? $row->delivery_address: ($row->user->address ?? '')}}
               </div>
             </td>
             <td>
-              <div style="width: 130px;">
+              <div style="max-width: 130px;">
                 {{$row->note}}
               </div>
             </td>

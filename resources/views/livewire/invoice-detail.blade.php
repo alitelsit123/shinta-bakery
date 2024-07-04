@@ -174,7 +174,7 @@
                           {{$transaction->user->phone}}<br>
                           {{$transaction->delivery_address ?? $transaction->user->address}}
                           @if ($transaction->note)
-                          <div class="alert">
+                          <div class="alert p-0">
                             Catatan: -- {{$transaction->note}} --
                           </div>
                           @else
