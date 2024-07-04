@@ -254,7 +254,10 @@
                           </div>
                         </div>
                       </div>
-                      @if ($transaction->status == 'settlement')
+                      @if ($transaction->delivered_by_driver)
+                      <div class="alert alert-success">Pesanan sudah dikirim driver.</div>
+                      @endif
+                      @if ($transaction->status == 'settlement' && $transaction->delivered_by_user)
                       <div class="alert alert-success">Pesanan sudah diterima, terimakasih</div>
                       @else
                       <button class="btn btn-success btn-block mt-2" wire:click="finishConfirmation({{$transaction->id}})">Terima Pesanan</button>
