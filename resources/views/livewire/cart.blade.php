@@ -51,7 +51,7 @@
                 {{$row->product->outlet->name}}
               </td> --}}
               <td>
-                <input x-ref="quantity" type="number" class="form-control" value="{{$row->quantity}}">
+                <input x-ref="quantity" type="number" min="1" class="form-control" value="{{$row->quantity}}">
               </td>
               <td>Rp. {{number_format($row->product->price)}}</td>
               <td>
