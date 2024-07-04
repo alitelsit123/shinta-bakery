@@ -11,6 +11,7 @@ class HomeDriver extends Component
     $tx = \App\Models\Transaction::findOrFail($id);
     $tx->status = 'settlement';
     $tx->delivered_to = $this->deliveredto;
+    $tx->delivered_by_driver = now();
     $tx->save();
     $this->dispatch('alert-success', message: 'Pesanan Diterima, terimakasih.');
   }

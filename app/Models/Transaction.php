@@ -24,7 +24,9 @@ class Transaction extends Model
     'date_order',
     'date_pickup',
     'note',
-    'delivered_to'
+    'delivered_to',
+    'delivered_by_driver',
+    'delivered_by_user'
   ];
   public function user() {
     return $this->belongsTo('App\Models\User', 'user_id');

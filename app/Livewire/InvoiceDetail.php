@@ -31,6 +31,7 @@ class InvoiceDetail extends Component
   public function finishConfirmation($id) {
     $tx = \App\Models\Transaction::findOrFail($id);
     $tx->status = 'settlement';
+    $tx->delivered_by_user = now();
     $tx->save();
     $this->dispatch('alert-success', message: 'Pesanan Diterima, terimakasih.');
     $this->dispatch('reload-page');
