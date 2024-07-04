@@ -8,12 +8,12 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class TestsTest extends TestCase
+class HomePelangganTest extends TestCase
 {
   /** @test */
   public function renders_successfully()
   {
-    Livewire::test(\App\Livewire\Home::class)
+    Livewire::test(\App\Livewire\HomeMember::class)
       ->assertStatus(200);
   }
 }
