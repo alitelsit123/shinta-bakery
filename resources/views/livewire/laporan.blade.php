@@ -36,7 +36,7 @@
             <input type="datetime-local" wire:model.live="startDate" class="form-control" id="" />
             <div style="flex-shrink: 0;" class="mx-4">Tanggal End</div>
             <input type="datetime-local" wire:model.live="endDate" class="form-control" id="" />
-            <button class="btn btn-sm btn-danger ml-4" @click="$wire.set('startDate', '');$wire.set('endDate', '')">Reset</button>
+            <button class="btn btn-sm btn-danger ml-4" @click="$wire.set('startDate', null);$wire.set('endDate', null)">Reset</button>
             <button class="btn btn-sm btn-primary ml-2" wire:click="export">Export</button>
           </div>
         </div>

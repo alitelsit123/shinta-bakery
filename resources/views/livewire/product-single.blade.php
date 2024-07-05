@@ -102,7 +102,7 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
           @if (auth()->user() && auth()->user()->carts()->whereProduct_id($item->id)->first())
           <div>Sudah dimasukkan keranjang</div>
           @else
-          <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" style="height: 20.13px;" x-ref="inputcart">
+          <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" min="1" style="height: 20.13px;" x-ref="inputcart">
 
           <button class="btn btn-sm btn-primary" type="button"
 
