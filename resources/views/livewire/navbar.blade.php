@@ -54,7 +54,9 @@
             </li>
           @endif
           @if (auth()->check() && auth()->user()->role == 'driver')
-
+          <li class="nav-item w-100 text-center" style="font-size: 18px;">
+            <a href="{{url('riwayat-pengiriman')}}" class="nav-link" style="" wire:navigate>Riwayat Pengiriman</a>
+          </li>
           @else
           @if (auth()->check() && auth()->user()->role == 'admin')
           <li class="nav-item w-100 text-center" style="font-size: 18px;">

@@ -24,6 +24,7 @@ Route::get('/message', \App\Livewire\Message::class);
 Route::get('/user', \App\Livewire\User::class);
 Route::get('/checkout', \App\Livewire\Checkout::class);
 Route::get('/invoice-detail/{transaction_id}', \App\Livewire\InvoiceDetail::class);
+Route::get('/riwayat-pengiriman', \App\Livewire\RiwayatPengiriman::class);
 Route::get('/laporan', \App\Livewire\Laporan::class);
 Route::get('/export-transactions', function() {
   $startDate = request('start_date');
