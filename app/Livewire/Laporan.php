@@ -13,11 +13,12 @@ class Laporan extends Component
   }
   public function render()
   {
+    // dd($this->startDate);
     $list = [];
     if (auth()->user()->role == 'admin') {
       $list = \App\Models\Transaction::query();
       if ($this->startDate && $this->endDate) {
-        $list->whereBetween('created_at', [$this->startDate, $this->endDate]);
+        $list->whereBetween('date_order', [$this->startDate, $this->endDate]);
       }
       $list = $list->get();
     } else {
