@@ -35,10 +35,10 @@
           <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
             <div class="invoice-details d-flex justify-content-between p-4">
               <address style="font-size: 18px;">
-                Nama: {{$transaction->user->name}}<br>
-                Email: {{$transaction->user->email}}<br>
-                Nomor HP: {{$transaction->user->phone}}<br>
-                Alamat: {{$transaction->delivery_address ?? $transaction->user->address}}
+                Nama: {{$transaction->user->name ?? ''}}<br>
+                Email: {{$transaction->user->email ?? ''}}<br>
+                Nomor HP: {{$transaction->user->phone ?? ''}}<br>
+                Alamat: {{$transaction->delivery_address}}
                 Catatan: {{$transaction->note}}
               </address>
               @if (in_array($transaction->status, ['pending','waiting']))
