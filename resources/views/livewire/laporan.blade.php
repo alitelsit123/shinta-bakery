@@ -59,7 +59,7 @@
           @foreach ($list as $row)
           <tr>
             <th scope="row">#{{$row->id}}</th>
-            <th scope="row">{{$row->user->name}}</th>
+            <th scope="row">{{$row->user->name ?? ''}}</th>
             <th scope="row">
               {{$row->detailProducts()->first()->product->name ?? ''}}<br />
               @if ($row->detailProducts()->count() > 1)
