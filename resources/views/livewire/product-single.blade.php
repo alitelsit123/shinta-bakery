@@ -64,6 +64,10 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
         {{-- <small id="" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
       </div>
       <div class="form-group">
+        <label for="">Stok</label>
+        <input type="number" class="form-control" id="" aria-describedby="" wire:model.live.debounce.250s="stock">
+      </div>
+      <div class="form-group">
         <label for="">Deskripsi</label>
         <textarea id="" class="form-control" rows="3" wire:model.live.debounce.250s="description"></textarea>
       </div>
@@ -102,7 +106,7 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
           @if (auth()->user() && auth()->user()->carts()->whereProduct_id($item->id)->first())
           <div>Sudah dimasukkan keranjang</div>
           @else
-          <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" min="1" style="height: 20.13px;" x-ref="inputcart">
+          <input type="number" id="" class="form-control" placeholder="Jumlah pesanan" min="1" max="{{$item->stock}}" style="height: 20.13px;" x-ref="inputcart">
 
           <button class="btn btn-sm btn-primary" type="button"
 
@@ -112,7 +116,8 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
           @else
 
-          @click="$('#auth-modal').modal('show')"
+          {{-- @click="$('#auth-modal').modal('show')" --}}
+          @click="document.location.href='{{url('login')}}'"
 
           @endif
 

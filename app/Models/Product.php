@@ -14,7 +14,8 @@ class Product extends Model
     'description',
     'status',
     'price',
-    'outlet_id'
+    'outlet_id',
+    'stock'
   ];
   public function outlet() {
     return $this->belongsTo('App\Models\Outlet','outlet_id');

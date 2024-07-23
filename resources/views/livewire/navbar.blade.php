@@ -29,8 +29,8 @@
             wire:navigate
             @else
 
-            @click="$('#auth-modal').modal('show')"
-            href="#"
+            {{-- @click="$('#auth-modal').modal('show')" --}}
+            href="{{url('login')}}"
 
             @endif
             >Keranjang</a>
@@ -74,7 +74,9 @@
         <li class="nav-item w-100 text-center">
           @if(!auth()->check())
 
-          <a href="#" data-target="#auth-modal" data-toggle="modal" class="nav-link colormenu2 px-4 py-2 btn-auth" style="
+          <a href="{{url('login')}}"
+          {{-- data-target="#auth-modal" data-toggle="modal"  --}}
+          class="nav-link colormenu2 px-4 py-2 btn-auth" style="
           font-size: 24px;
           font-weight: bold;
           border: 2px solid #5f492f;

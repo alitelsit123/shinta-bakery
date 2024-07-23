@@ -64,6 +64,21 @@
               <input type="datetime-local" min="{{now()->addDays(1)}}" wire:model.live="date_pickup" class="form-control" id="" />
             </div>
             <div class="form-group mb-3 text-left">
+              <label for="exampleFormControlInput1" class="form-label">Provinsi</label>
+              <select wire:model.live="prov" class="form-control" id="">
+                <option value="Prov. Jawa Timur">Jawa Timur</option>
+              </select>
+            </div>
+            <div class="form-group mb-3 text-left">
+              <label for="exampleFormControlInput1" class="form-label">Kabupaten / Kota</label>
+              <select wire:model.live="kab" class="form-control" id="">
+                <option value="">-- Pilih Kabupaten</option>
+                <option value="Kab. Magetan">Magetan</option>
+                <option value="Kab. Madiun">Madiun</option>
+                <option value="Kab. Ngawi">Ngawi</option>
+              </select>
+            </div>
+            <div class="form-group mb-3 text-left">
               <label for="exampleFormControlInput1" class="form-label">Alamat Lengkap</label>
               <textarea class="form-control" id="" wire:model.live="address" rows="5"></textarea>
             </div>

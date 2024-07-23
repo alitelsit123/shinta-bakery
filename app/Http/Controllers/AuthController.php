@@ -8,7 +8,10 @@ class AuthController extends Controller
 {
   public function login(){
     $request = request();
-    $credentials = request()->only(['email','password']);
+    $credentials = [
+      'email' => request('emails'),
+      'password' => request('passwords')
+    ];
     if (auth()->attempt($credentials)) {
       $request->session()->regenerate();
 
@@ -17,6 +20,7 @@ class AuthController extends Controller
     return back()->with(['alert-error' => 'Username / Password Salah!!!']);
   }
   public function register(){
+    $request = request();
     $existingUser = \App\Models\User::whereEmail(request('email'))->orWhere('phone',request('phone'))->first();
     if ($existingUser) {
       return back()->with(['alert-error' => 'Email atau Nomor HP sudah terdaftar!']);
@@ -30,7 +34,8 @@ class AuthController extends Controller
       'password' => \Hash::make(request('password')),
     ]);
     auth()->login($user);
-    return back();
+    $request->session()->regenerate();
+    return redirect()->intended('/');
   }
   public function logout() {
     auth()->logout();

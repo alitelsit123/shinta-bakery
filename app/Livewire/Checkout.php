@@ -12,6 +12,8 @@ class Checkout extends Component
   public $date_pickup;
   public $address;
   public $driver_id;
+  public $prov = 'Prov. Jawa Timur';
+  public $kab;
   public function selectDriver($id) {
     $this->driver_id = $id;
     $this->dispatch('alert-success', message: "Driver dipilih!");
@@ -26,6 +28,10 @@ class Checkout extends Component
       $this->dispatch('alert-error', message: "Silahkan pilih driver!");
       return;
     }
+    if (!$this->kab) {
+      $this->dispatch('alert-error', message: "Silahkan pilih kabupaten!");
+      return;
+    }
     $myCarts = auth()->user()->carts;
     $total = 0;
     foreach ($myCarts as $row) {
@@ -34,7 +40,7 @@ class Checkout extends Component
     $tx = \App\Models\Transaction::create([
       'status' => 'pending',
       'token' => null,
-      'delivery_address' => $this->address,
+      'delivery_address' => $this->prov.' '.$this->kab.' '.$this->address,
       'delivery_pinpoint' => auth()->user()->address_pinpoint,
       'subtotal' => $total,
       'total' => $total,
@@ -62,7 +68,7 @@ class Checkout extends Component
     }
     auth()->user()->carts()->delete();
     $this->dispatch('pay-now', message: 'Pembayaran sedang disiapkan', token: '');
-    $this->redirect('invoice-detail/'.$tx->id, navigate: true);
+    $this->redirect('invoice-detail/'.$tx->id);
   }
   public function mount() {
     $this->address = auth()->user()->address;

@@ -16,7 +16,14 @@ class ProductSingle extends Component
   public $image;
   public $realImage;
   public $outlet_id;
+  public $stock = 0;
   public function addToCart($id,$quantity) {
+    $product = \App\Models\Product::findOrFail($id);
+    if ($product->stock < $quantity) {
+      $this->dispatch('alert-error', message: 'Stok tersisa '.$product->stock.'!');
+      return false;
+    }
+
     $existingCart = \App\Models\Cart::whereProduct_id($id)->whereUser_id(auth()->id())->first();
     if ($existingCart) {
       $existingCart->quantity = $quantity ? $quantity: 1;
@@ -33,6 +40,12 @@ class ProductSingle extends Component
   public function updatedDescription() {
     if ($this->description) {
       $this->item->description = $this->description;
+      $this->item->save();
+    }
+  }
+  public function updatedStock() {
+    if ($this->stock) {
+      $this->item->stock = $this->stock;
       $this->item->save();
     }
   }
@@ -84,6 +97,7 @@ class ProductSingle extends Component
     $this->description = $this->item->description;
     $this->price = $this->item->price;
     $this->realImage = $this->item->realImage;
+    $this->stock = $this->item->stock;
   }
   public function render()
   {

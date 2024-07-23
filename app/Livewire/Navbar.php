@@ -15,8 +15,9 @@ class Navbar extends Component
         foreach ($transactionWaiting as $row) {
           $row->notified_at = now();
           $row->save();
+          $this->dispatch('order-received', message: 'Pelanggan '.$row->user->name.' telah melakukan pembayaran, dengan order id: #'.$row->id);
         }
-        $this->dispatch('order-received', message: '('.$transactionWaiting->count().') Pesanan menunggu konfirmasi');
+        // $this->dispatch('order-received', message: '('.$transactionWaiting->count().') Pesanan menunggu konfirmasi');
       }
     } elseif (auth()->check() && auth()->user()->role == 'member') {
       $pendings = auth()->user()->transactions()->whereNotNull('provider_id')->whereStatus('pending')->whereDate('created_at', '>', \Carbon\Carbon::now()->subDays(1))->get();
@@ -29,6 +30,13 @@ class Navbar extends Component
             if ($status) {
               $row->status = 'waiting';
               $row->save();
+              foreach ($row->detailProducts as $rowProduct) {
+                $product = $rowProduct->product;
+                if ($product) {
+                  $product->stock = $product->stock - $rowProduct->quantity;
+                  $product->save();
+                }
+              }
               $this->dispatch('alert-success', message: 'Pembayaran berhasil, silahkan refresh halaman.');
             }
             sleep(1);

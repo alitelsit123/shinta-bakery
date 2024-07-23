@@ -16,6 +16,12 @@ class Cart extends Component
     $this->note = auth()->user()->carts()->first()->note ?? null;
   }
   public function updateQuantity($id, $quantity) {
+    $singleCart = auth()->user()->carts()->whereId($id)->first();
+    $product = \App\Models\Product::findOrFail($singleCart->product_id);
+    if ($product->stock < $quantity) {
+      $this->dispatch('alert-error', message: 'Stok tersisa '.$product->stock.'!');
+      return false;
+    }
     $cart = auth()->user()->carts()->whereId($id)->update([
       'quantity' => $quantity
     ]);

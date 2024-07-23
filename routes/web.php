@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/admin', \App\Livewire\Admin\Dashboard::class);
+Route::get('/login', \App\Livewire\Login::class);
+Route::get('/register', \App\Livewire\Register::class);
 Route::get('/', \App\Livewire\Home::class);
 Route::get('/product', \App\Livewire\Product::class);
 Route::get('/transaction', \App\Livewire\Transaction::class);
