@@ -98,6 +98,9 @@ box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
       <div style="font-family:brandon_medium; font-size:19px ; color:#605f64; padding: 10px 0 0 0;">
         Rp. {{number_format($item->price)}}
       </div>
+      <div style="font-family:brandon_medium; color:#605f64; padding: 10px 0 0 0;">
+        Stok Tersisa: {{$item->stock}}
+      </div>
       <div style="font-family:playfair_bold; color:#606064; padding:10px 0 0 0;">
         {{$item->description}}
       </div>
