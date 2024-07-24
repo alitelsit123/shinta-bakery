@@ -48,7 +48,21 @@ Route::get('/export-transactions', function() {
       $file = fopen('php://output', 'w');
       fputcsv($file, $columns);
 
+      $productsIds = [];
+      $totalQuantity = 0;
+      $totalTransactions = 0;
+
       foreach ($transactions as $transaction) {
+          $totalTransactions += $transaction->total;
+          foreach ($transaction->detailProducts as $detailProduct) {
+              if (isset($productsIds[$detailProduct->product_id])) {
+                  $productsIds[$detailProduct->product_id] += $detailProduct->quantity;
+              } else {
+                  $productsIds[$detailProduct->product_id] = $detailProduct->quantity;
+              }
+              $totalQuantity += $detailProduct->quantity;
+          }
+
           $productNames = $transaction->detailProducts->pluck('product.name')->toArray();
           $productNamesString = implode(", ", $productNames);
 
@@ -63,11 +77,22 @@ Route::get('/export-transactions', function() {
           fputcsv($file, $row);
       }
 
+      $totalStock = \App\Models\Product::sum('stock');
+      $totalItems = $totalQuantity + $totalStock;
+
+      // Write the additional summary info as new rows
+      fputcsv($file, []);
+      fputcsv($file, ['Total Transaksi', 'Rp. ' . number_format($totalTransactions)]);
+      fputcsv($file, ['Total Terjual', number_format($totalQuantity) . ' Item']);
+      fputcsv($file, ['Total Stock', number_format($totalItems) . ' Item']);
+      fputcsv($file, ['Stock Tersisa', number_format($totalStock) . ' Item']);
+
       fclose($file);
   };
 
   return \Illuminate\Support\Facades\Response::stream($callback, 200, $headers);
 });
+
 
 Route::post('/login', [\App\Http\Controllers\AuthController::class,'login']);
 Route::post('/register', [\App\Http\Controllers\AuthController::class,'register']);

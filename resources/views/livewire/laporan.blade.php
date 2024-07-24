@@ -42,7 +42,32 @@
         </div>
       </div>
       <hr />
-      <h4 class="text-center">Total Rp. {{number_format($list->sum('total'))}}</h4>
+      <div class="d-flex align-items-center justify-content-center w-100" style="column-gap: 1rem;">
+        <h4 class="text-center p-2" style="border: 2px solid #003063;">Total Transaksi Rp. {{number_format($list->sum('total'))}}</h4>
+        @php
+        $productsIds = [];
+        $total = 0;
+        foreach ($list as $row) {
+          foreach ($row->detailProducts as $rowDetail) {
+            if (isset($productsIds[$rowDetail->product_id])) {
+              $productsIds[$rowDetail->product_id] = $productsIds[$rowDetail->product_id] + $rowDetail->quantity;
+            } else {
+              $productsIds[$rowDetail->product_id] = $rowDetail->quantity;
+            }
+            $total = $total + $rowDetail->quantity;
+          }
+        }
+        // foreach ($productIds as $row) {
+        //   $product = \App\Models\Product::find($row);
+        //   if ($product) {
+        //     echo '<h4 class="text-center">Total Transaksi Rp. </h4>';
+        //   }
+        // }
+        @endphp
+        <h4 class="text-center p-2" style="border: 2px solid #003063;">Total Terjual Rp. {{number_format($total)}} Item</h4>
+        <h4 class="text-center p-2" style="border: 2px solid #003063;">Total Stock Rp. {{number_format($total + \App\Models\Product::query()->sum('stock'))}} Item</h4>
+        <h4 class="text-center p-2" style="border: 2px solid #003063;">Stock Tersisa Rp. {{number_format(\App\Models\Product::query()->sum('stock'))}} Item</h4>
+      </div>
       <hr />
       <table class="table">
         <thead class="thead-dark">
